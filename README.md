@@ -19,7 +19,7 @@ npm test
 VERIFY_ORIGIN=http://127.0.0.1:3000 npm run verify:live
 ```
 
-The eight automated tests cover all 37 pages, metadata, internal links and images, global content, redirects, USD pricing, dashboard tabs, filters, service recommendations, form validation, provider-failure recovery and the automation demo. The live checker verifies served pages, assets, redirects and actual missing-page behavior.
+The nine automated tests cover all 37 pages, metadata, internal links and images, global content, redirects, USD pricing, dashboard tabs, filters, service recommendations, form validation, provider-failure recovery and the automation demo. The live checker verifies served pages, assets, redirects and actual missing-page behavior.
 
 ## Where to edit
 
@@ -31,6 +31,8 @@ The eight automated tests cover all 37 pages, metadata, internal links and image
 | `src/articles.mjs` | Fifteen practical editorial guides |
 | `public/site.css` | Responsive visual system |
 | `public/site.js` | Search, navigation, filters, demos, forms and pricing display |
+| `public/corporate.css` / `public/corporate.js` | Corporate component treatment, mega-menu and accessible orchestration motion |
+| `src/corporate.mjs` | Product-led hero and portfolio evidence strip |
 | `public/brand/` | Supplied master and division assets, prepared for web |
 | `public/images/` | Four original working-scene photographs and responsive exports |
 | `api/` | Resend-backed enquiry and newsletter endpoints |
@@ -56,3 +58,9 @@ Contact validation runs before submission. A provider outage displays an explici
 All 37 pages are complete marketing/editorial pages. Academy, Talent and Jobs do not claim an authenticated learning system, candidate database or hiring platform. Pricing is indicative and in USD; annual totals are exactly twelve monthly estimates, with implementation, usage and taxes separate. Confirm commercial terms, mailbox setup and the privacy notice against actual business arrangements before public release.
 
 Project previews are original interface studies, not live screenshots or customer-result claims. The source repositories are linked on each project story. See `docs/REFERENCE-RESEARCH.md`, `docs/image-assets.json` and `docs/VALIDATION.md` for provenance and verification details.
+
+## Corporate component refinement
+
+The corporate hero includes three local workflow scenarios, explicit animation pause/play, offscreen suspension and reduced-motion defaults. All 37 pages share the refined typography, sticky navigation, service mega-menu, component surfaces and interaction states.
+
+Button and tab treatments include HTML/CSS adaptations of 21st.dev’s MIT-licensed public source. Attribution and licence are in `docs/THIRD-PARTY-NOTICES.md`. Jitter was requested but its editor/site is unavailable through this environment; no animation is claimed as a Jitter export. Motion is authored in the website itself. Direct 21st.dev and jitter.video access was requested in the environment configuration draft.

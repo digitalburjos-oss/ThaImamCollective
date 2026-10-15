@@ -11,3 +11,11 @@ Images are four original, realistic working scenes: workflow review, warehouse s
 The workspace tabs, project filters, service finder, journal search, keyboard search, pricing display and automation sample are interactive. Data is visibly labelled as sample content. The workflow ends at human review and sends nothing. Contact and newsletter forms expose honest validation, loading, failure and success states. Content is present without JavaScript; motion is limited to the opening composition and respects reduced motion.
 
 Persuasive surfaces: homepage, capabilities, work and commercial pages. Readable surfaces: the journal and privacy notice. Focus rings, selection, form caret, scrollbars and responsive layouts follow the same palette. Desktop and mobile screenshots document the shipped composition in `docs/`.
+
+## Corporate refinement
+
+The homepage now opens with a product-led aubergine chapter, a restrained studio-photography backdrop and the headline “Intelligence, put to work.” The orchestration panel demonstrates three sample journeys—operations, growth and delivery—with clear handovers and a visible human-review endpoint. The panel has a restrained perspective treatment on desktop and becomes flat on mobile.
+
+Motion is paced around meaningful workflow progression, not decorative continuous movement. It pauses through an explicit control, when offscreen or hidden, and defaults to paused for reduced-motion users. Other motion is limited to the opening composition and subtle control feedback. Small interface text uses strengthened contrast.
+
+The shared header is sticky with a keyboard-operable six-capability service menu. Button spark/backdrop composition and tab active surfaces adapt 21st.dev source, with MIT attribution retained. Interior pages share the corporate type scale and controls; the palette and supplied identity remain authoritative. Jitter was not accessible and no Jitter-authored asset is claimed.
