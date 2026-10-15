@@ -71,3 +71,13 @@ The site builds 89 canonical pages: the previous 62, a Catalogue hub, Solutions,
 Presentation changes are limited to shared heroes, action buttons, the closing CTA and links needed to discover the new pages. Interior heroes receive purpose-specific working-perspective panels. Service heroes retain their original photographs with refined framing and a compact delivery sequence. The homepage retains its orchestration composition, with updated photo treatment and primary actions. Reduced-motion rules disable entrance effects; decorative panels do not claim live data or client results.
 
 The invitation block inside the footer has been removed. Each page has at most one closing CTA, with ordinary contact links retained in the footer. Existing dashboard, search, forms, article photography, guide, notices and non-hero content retain their established behavior. Build and automated verification cover all routes, reference mapping, module links and visible structured facts, hero presence and single closing invitations. Browser visual QA and live deployment remain unverified.
+
+## Reference-wide experience verification
+
+The current release builds 89 canonical pages with native static-host entries and passes all 30 tests. Every page loads a single experience stylesheet, uses the same reference hero hierarchy, retains its canonical URL and includes the Collective header/footer assets.
+
+An ephemeral Chromium package enabled browser testing without adding a project dependency. All 89 routes were loaded at 1440px and 390px, for 178 page/viewport checks. Every response was 200, every page had one photographic hero and one footer, all header Get Started buttons were visible, and no horizontal overflow, loaded broken images or page JavaScript errors were detected. Earlier targeted checks also covered eight representative pages at 320px, 768px and 1024px.
+
+Real-browser checks also passed mobile-sheet opening and closing, keyboard search dismissal, scroll restoration and reduced-motion cards returning to normal document flow. Visual review covered desktop homepage, footer, mobile homepage and the capability/Explore sheet. That review caught a legacy mobile rule hiding the header CTA; it was corrected and the full browser route checks were repeated successfully.
+
+The reference implementation is adapted with the Collective brand palette and artwork. These checks establish page consistency and working behavior; they do not claim certified pixel-for-pixel parity with DigitalBurj or a completed public deployment.
