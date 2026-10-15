@@ -11,7 +11,8 @@ module.exports = async (req, res) => {
   if (b.website) return res.status(200).json({ ok: true });
   const email = clean(b.email, 200).toLowerCase(), source = clean(b.source, 120);
   if (!EMAIL.test(email)) return res.status(400).json({ error: "Please enter a valid email." });
-  const to = process.env.CONTACT_TO, from = process.env.MAIL_FROM;
+  const to = process.env.CONTACT_TO || "contact@theimamcollective.com";
+  const from = process.env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
   const payload = { email, unsubscribed: false };
   if (process.env.RESEND_SEGMENT_ID) payload.segments = [{ id: process.env.RESEND_SEGMENT_ID }];
   const [saved, notified] = await Promise.all([

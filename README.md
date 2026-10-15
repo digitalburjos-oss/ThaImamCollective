@@ -38,11 +38,18 @@ Canonical domain: `https://theimamcollective.com` (from the supplied brand kit).
 
 The contact form offers an email-app fallback to the project inbox when automated delivery is unavailable. Newsletter and process-review submissions show an error if the service is unavailable; they never pretend a message was delivered.
 
-For automatic delivery, configure `RESEND_API_KEY` securely on the deployment host and verify `theimamcollective.com` with Resend. The default sender is `Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>` and enquiry recipient is `contact@theimamcollective.com`. Optional `MAIL_FROM`, `CONTACT_TO`, and `RESEND_SEGMENT_ID` override these settings. Do not put API keys in the repository. No real outbound emails were sent during validation.
+For automatic delivery, set `RESEND_API_KEY` on the deployment host and verify `theimamcollective.com` as a sending domain with Resend — that is the only required binding. The default sender is `Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>` and the enquiry recipient is `contact@theimamcollective.com`; `MAIL_FROM`, `CONTACT_TO` and `RESEND_SEGMENT_ID` override those settings. Do not put API keys in the repository. No real outbound emails were sent during validation.
 
 ## Deploy
 
-Vercel: import this repository; `vercel.json` configures the build, static routes, and Node serverless API handlers. Configure the email bindings before enabling automatic delivery and connect the canonical domain in your hosting account.
+Vercel: import this repository; `vercel.json` configures the build (`npm run build`), the 31 static routes and the Node serverless handlers in `api/`. Set these environment variables for Production and Preview:
+
+- `RESEND_API_KEY` — required. Without it the contact, process-review and newsletter endpoints return 503.
+- `MAIL_FROM` — optional. Overrides the branded sender above; must be on a Resend-verified domain.
+- `CONTACT_TO` — optional. Overrides the enquiry recipient above.
+- `RESEND_SEGMENT_ID` — optional. Files new subscribers into a Resend segment.
+
+Then connect the canonical domain `theimamcollective.com` and confirm the release with `npm run verify:live`, or dispatch the `SEO build and live verification` workflow with `verify_live` enabled.
 
 A Cloudflare Worker alternative is retained in `cloudflare/`. Its KV, commit and mail bindings must be configured for this project; no reference deployment credentials, audience IDs or analytics are inherited. The site has not been published or pushed remotely.
 
