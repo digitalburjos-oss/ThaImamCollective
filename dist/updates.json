@@ -1,0 +1,14 @@
+{
+  "updates": [
+    {
+      "id": "choose-your-starting-point",
+      "type": "announcement",
+      "title": "One problem is enough to start.",
+      "body": "You do not need a full transformation brief. Tell us where work gets stuck and explore the relevant service with us.",
+      "startsAt": "2026-10-15T00:00:00Z",
+      "endsAt": null,
+      "href": "/get-started",
+      "label": "Describe the problem"
+    }
+  ]
+}

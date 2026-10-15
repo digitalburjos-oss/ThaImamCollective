@@ -27,3 +27,29 @@ The marketing website does not deploy or expose the referenced projects’ authe
 The refined site was loaded on all 37 routes at desktop and mobile widths without viewport overflow, failed loaded images or browser JavaScript errors. The new automated regression covers scenario selection, arrow-key tabs, explicit motion pause and Escape dismissal of the service menu. A separate native-browser check verifies timed phase progression, pause stability, menu links, additional viewport widths and reduced-motion defaults.
 
 21st.dev’s public GitHub source and MIT licence were inspected. Direct website requests to 21st.dev and jitter.video returned proxy-policy denials; requested domains were saved additively in the environment draft. No Jitter account/editor was accessed or export generated.
+
+## Editorial imagery and owned website guide — 2026-10-15
+
+Three original editorial scenes generated with the built-in image generator are stored as compressed WebP assets in public/images/editorial-{enquiries,training,testing}.webp. Briefs: a business owner reviewing quotation paperwork with a colleague; a small team practising a laptop workflow; a designer comparing a mobile website with a laptop. These are illustrative scenes, not client or staff photographs. Topic-specific imagery now appears on article cards and article pages.
+
+The website guide is first-party, browser-local topic matching against published service descriptions. It is not a model-backed assistant or a live human chat. It stores no transcript and sends no chat messages to a server. Contact remains the existing explicit enquiry flow. Announcement dismissal uses session storage. No external chat widget, tracking service or connector is added.
+
+Edit public/updates.json to schedule announcements, alerts or offers. Each entry needs id, type, title, body, startsAt, href and label. endsAt is optional for announcements; offers require both endsAt and terms. Dates use ISO 8601 with timezone. Rebuild and publish the site after changes. The browser rechecks this file every five minutes while visible, and filters expired/future entries. No background publishing or browser push is implied. No unapproved discounts are advertised.
+
+All six service pages include expanded preparation, scope and acceptance guidance. The existing logo family, palette and typography are retained. New automated checks cover assistant behavior, safe message rendering, panel controls and schedule/offer filtering. Browser visual QA has not been performed in this session.
+
+## Brand, editorial and search expansion — 2026-10-15
+
+The site now builds 62 crawlable pages: the original service, journal and company routes, four anonymous workflow examples, a detailed-services hub, 18 focused service pages and six industry pages. Named projects, their repository links and their public route names have been removed from generated pages and public assets. Examples explicitly describe illustrative scope with sample records.
+
+Each of the 15 articles receives a distinct generated editorial photograph with full-size and 768px WebP exports. Scene briefs describe ordinary work relevant to the topic: quotation review, order processing, customer support, stock handovers, release testing, prototype review, access approval, training, hiring, shipping documents, property enquiries and approval checklists. Images are illustrative rather than documentary evidence of a client relationship. The built-in image-generation tool is used; exact output-to-article mapping is recorded in docs/blog-image-assets.json.
+
+The original transparent icon mark supplies favicon exports at 32, 180, 192 and 512 pixels and the ICO. The header adds the agreed readable tagline. The footer uses the transparent compact logo with a monochrome reverse treatment, avoiding the rectangular background in the old raster reverse asset.
+
+Every page has a unique title, description, canonical URL, Open Graph and Twitter metadata. Article social images match the article photographs. BlogPosting, Organization, WebSite, BreadcrumbList and relevant Service/FAQPage JSON-LD describe visible content. The sitemap includes article images and modification dates. The detailed-service hub and capability pages link the new routes. llms.txt is provided as a discovery aid, not an indexing or AI-answer guarantee.
+
+Google Analytics preparation is intentionally disabled with no measurement ID, per the user's selection. public/analytics-config.json controls later activation. Even with a valid enabled ID, scripts wait for visitor consent. Page view URLs exclude query strings; no form or chat contents are sent as custom events. The footer exposes preference controls. This is not a claim of account verification, Search Console ownership, Meta business verification, live analytics collection or guaranteed rankings.
+
+Search implementation follows Google's public guidance: https://developers.google.com/search/docs/fundamentals/seo-starter-guide and https://developers.google.com/search/docs/crawling-indexing/special-tags . Google does not use meta keywords for indexing or ranking. Current subject terms are mapped to useful pages; unsupported trend-volume or ranking claims are not made. Indexing and rich results require search-engine processing after deployment. Meta social previews are configured; Meta Pixel would need a supplied account ID and separately approved tracking scope.
+
+Validation includes page counts, links, assets, metadata, visible structured facts, removal of excluded names, identity consistency, article image uniqueness, consent-gated analytics and query-string exclusion. No browser screenshot QA or verified live deployment is claimed for this revision.
