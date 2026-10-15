@@ -33,3 +33,9 @@ Analytics is prepared with consent controls and intentionally disabled until a v
 The latest visual layer is scoped to page heroes, action buttons and the closing invitation. Ivory editorial layouts pair with compact aubergine working-perspective panels, restrained vermilion accents and clear actions. Service photography receives a refined frame rather than an unrelated graphic. No animated dashboard claims or invented customer statistics are introduced. The footer uses its ordinary company/navigation layout; a page's single closing CTA provides the invitation.
 
 The Catalogue, Solutions and Portfolio pages connect fourteen operational module briefs with the existing capability structure. Industry coverage expands without changing the established card, reading or form layouts. Modules describe scoped implementation, with reviewed dependencies and handovers.
+
+## Component and motion direction
+
+The supplied Aceternity, Magic UI, 21st.dev, shadcn, ReUI and editorial references guide interaction choices, not package adoption. This static site uses native HTML, CSS and JavaScript: a compact sticky floating header, bounded CTA pointer attraction, hover/focus border shine, manual capability browsing, focused product surfaces, a process timeline and short state-entry feedback. Existing native menus, dialogs and tabs retain their behavior. No copied component code, paid animation, external animation runtime, particles or WebGL is introduced.
+
+Pointer motion is bounded to three horizontal and two vertical pixels and disabled for touch and reduced motion. Keyboard focus stays stationary. Context panels animate once when opened; content reveals once on entry. The desktop practice copy stays alongside its photograph, while mobile stays in normal flow. The mobile navigation scrolls within the available viewport. All color roles and supplied artwork remain part of the Collective identity.
