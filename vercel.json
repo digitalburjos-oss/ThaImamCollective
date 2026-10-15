@@ -136,6 +136,10 @@
       "destination": "/pages/home.html"
     },
     {
+      "source": "/expertise",
+      "destination": "/pages/expertise.html"
+    },
+    {
       "source": "/services",
       "destination": "/pages/services.html"
     },
@@ -180,6 +184,102 @@
       "destination": "/pages/privacy.html"
     },
     {
+      "source": "/expertise/crm-implementation",
+      "destination": "/pages/expertise/crm-implementation.html"
+    },
+    {
+      "source": "/expertise/erp-implementation",
+      "destination": "/pages/expertise/erp-implementation.html"
+    },
+    {
+      "source": "/expertise/workflow-automation",
+      "destination": "/pages/expertise/workflow-automation.html"
+    },
+    {
+      "source": "/expertise/ai-agents",
+      "destination": "/pages/expertise/ai-agents.html"
+    },
+    {
+      "source": "/expertise/knowledge-assistants",
+      "destination": "/pages/expertise/knowledge-assistants.html"
+    },
+    {
+      "source": "/expertise/document-automation",
+      "destination": "/pages/expertise/document-automation.html"
+    },
+    {
+      "source": "/expertise/website-design-development",
+      "destination": "/pages/expertise/website-design-development.html"
+    },
+    {
+      "source": "/expertise/custom-software-development",
+      "destination": "/pages/expertise/custom-software-development.html"
+    },
+    {
+      "source": "/expertise/mobile-app-development",
+      "destination": "/pages/expertise/mobile-app-development.html"
+    },
+    {
+      "source": "/expertise/brand-identity",
+      "destination": "/pages/expertise/brand-identity.html"
+    },
+    {
+      "source": "/expertise/ecommerce-development",
+      "destination": "/pages/expertise/ecommerce-development.html"
+    },
+    {
+      "source": "/expertise/analytics-dashboards",
+      "destination": "/pages/expertise/analytics-dashboards.html"
+    },
+    {
+      "source": "/expertise/seo-services",
+      "destination": "/pages/expertise/seo-services.html"
+    },
+    {
+      "source": "/expertise/answer-engine-optimisation",
+      "destination": "/pages/expertise/answer-engine-optimisation.html"
+    },
+    {
+      "source": "/expertise/social-media-content",
+      "destination": "/pages/expertise/social-media-content.html"
+    },
+    {
+      "source": "/expertise/paid-campaigns",
+      "destination": "/pages/expertise/paid-campaigns.html"
+    },
+    {
+      "source": "/expertise/team-ai-training",
+      "destination": "/pages/expertise/team-ai-training.html"
+    },
+    {
+      "source": "/expertise/skills-based-talent",
+      "destination": "/pages/expertise/skills-based-talent.html"
+    },
+    {
+      "source": "/industries/logistics",
+      "destination": "/pages/industries/logistics.html"
+    },
+    {
+      "source": "/industries/professional-services",
+      "destination": "/pages/industries/professional-services.html"
+    },
+    {
+      "source": "/industries/retail-commerce",
+      "destination": "/pages/industries/retail-commerce.html"
+    },
+    {
+      "source": "/industries/real-estate",
+      "destination": "/pages/industries/real-estate.html"
+    },
+    {
+      "source": "/industries/education-training",
+      "destination": "/pages/industries/education-training.html"
+    },
+    {
+      "source": "/industries/restaurants-food-service",
+      "destination": "/pages/industries/restaurants-food-service.html"
+    },
+    {
       "source": "/services/os",
       "destination": "/pages/services/os.html"
     },
@@ -204,20 +304,20 @@
       "destination": "/pages/services/talent.html"
     },
     {
-      "source": "/work/loadbyton-os",
-      "destination": "/pages/work/loadbyton-os.html"
+      "source": "/work/freight-operations",
+      "destination": "/pages/work/freight-operations.html"
     },
     {
-      "source": "/work/loadbyton",
-      "destination": "/pages/work/loadbyton.html"
+      "source": "/work/customer-enquiry",
+      "destination": "/pages/work/customer-enquiry.html"
     },
     {
-      "source": "/work/digitalburj",
-      "destination": "/pages/work/digitalburj.html"
+      "source": "/work/service-website",
+      "destination": "/pages/work/service-website.html"
     },
     {
-      "source": "/work/elvora",
-      "destination": "/pages/work/elvora.html"
+      "source": "/work/team-onboarding",
+      "destination": "/pages/work/team-onboarding.html"
     },
     {
       "source": "/insights/what-is-business-ai",
