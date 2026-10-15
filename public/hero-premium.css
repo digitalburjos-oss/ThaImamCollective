@@ -50,3 +50,14 @@
 .section.wrap>h2,.related-section>h2{margin:0 0 38px}
 .section>.section-heading+.button{margin-bottom:72px}
 .section-heading+.topic-grid,.section-heading+.detail-grid,.section-heading+.timeline-grid{margin-top:0}
+/* Homepage workflow narrative */
+.flow-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 72px;counter-reset:none}
+.flow-steps li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding:30px 0;border-top:1px solid #ded8d8}
+.flow-num{font-size:.8rem;font-weight:600;color:#9d321d;padding-top:5px}
+.flow-steps h3{font-size:1.25rem;margin:0 0 10px}
+.flow-steps p{margin:0;font-size:.95rem;line-height:1.7;color:#5f5062}
+.flow-steps .flow-risk{margin-top:12px;font-size:.84rem;color:#736774;font-style:italic}
+.flow-section .section-end{margin-top:48px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.flow-section .section-end>p{max-width:60ch;color:#5f5062}
+@media(max-width:860px){.flow-steps{grid-template-columns:1fr}}
+.topic-card{display:flex;flex-direction:column}.topic-card>span:last-child{margin-top:auto;padding-top:18px}
