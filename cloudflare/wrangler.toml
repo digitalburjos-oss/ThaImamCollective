@@ -4,11 +4,11 @@ compatibility_date = "2026-09-01"
 
 [vars]
 # ADMIN_EMAILS = "you@example.com"   # comma-separated; enables /admin for verified addresses
-# COMMIT = "your published commit"
+COMMIT = "7821e325f22dc8af4b6558b879b1a371466ff05d"
 # CONTACT_TO = "configure for your own business"
 # MAIL_FROM = "configure for your own business"
 # RESEND_SEGMENT_ID = "configure for your own business"
 
 [[kv_namespaces]]
 binding = "SITE"
-id = "00000000000000000000000000000000"
+id = "a4c35cd80b734ca0bdbdecd7da48a8bc"
