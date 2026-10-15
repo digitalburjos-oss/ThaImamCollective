@@ -28,3 +28,7 @@ test('configured analytics waits for consent and excludes query strings',async()
  const dom=new JSDOM(read('index.html'),{url:'https://theimamcollective.com/contact?email=private@example.com',runScripts:'outside-only'}),w=dom.window;
  w.fetch=async()=>({ok:true,json:async()=>({enabled:true,measurementId:'G-TEST1234'})});w.eval(read('analytics.js'));await new Promise(r=>setTimeout(r,0));assert.equal(w.document.querySelector('script[src*="googletagmanager"]'),null);w.document.querySelector('[data-analytics-accept]').click();assert(w.document.querySelector('script[src*="googletagmanager"]'));const events=JSON.stringify(w.dataLayer);assert(!events.includes('private@example.com'));assert(events.includes('https://theimamcollective.com/contact'));w.document.querySelector('[data-analytics-reject]').click();assert.equal(w['ga-disable-G-TEST1234'],true);dom.window.close();
 });
+
+test('service heroes keep the breadcrumb and omit the duplicate capability link',()=>{
+ for(const slug of ['os','ai','studio','growth','academy','talent']){const {document:d}=parseHTML(read(routes['/services/'+slug]));assert(d.querySelector('nav[aria-label=Breadcrumb]'));assert.equal(d.querySelector('.service-hero .back-link'),null);assert.equal(d.querySelectorAll('.service-hero .division-logo').length,1);assert(d.querySelector('.mega-link img.capability-icon'));}
+});
