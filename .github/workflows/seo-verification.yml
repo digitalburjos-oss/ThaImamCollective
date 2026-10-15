@@ -1,0 +1,60 @@
+name: SEO build and live verification
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'dist/**'
+      - 'cloudflare/**'
+      - 'package*.json'
+      - '.github/workflows/seo-verification.yml'
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+    inputs:
+      verify_live:
+        description: 'Check every public route on theimamcollective.com (run after deployment)'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Verify generated SEO release files are committed
+        run: |
+          git diff --exit-code -- dist/seo-pages dist/seo-routes.json dist/sitemap.xml dist/robots.txt dist/llms.txt cloudflare/seo-routes.js cloudflare/worker-dashboard.mjs vercel.json
+          if [ -n "$(git ls-files --others --exclude-standard dist/seo-pages)" ]; then
+            echo 'Untracked SEO release files found; commit generated output before deploying.'
+            exit 1
+          fi
+      - run: npm test
+  verify-public-deployment:
+    if: github.event_name == 'workflow_dispatch' && inputs.verify_live
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Check canonical URLs, schema, generated HTML, sitemap and status codes
+        run: npm run verify:live

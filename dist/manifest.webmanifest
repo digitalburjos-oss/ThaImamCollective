@@ -1,0 +1,28 @@
+{
+  "name": "The Indian Makers \u2014 Automation & Marketing",
+  "short_name": "Indian Makers",
+  "icons": [
+    {
+      "src": "/brand/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#07543A",
+  "background_color": "#FAF8F0",
+  "display": "browser",
+  "start_url": "/"
+}

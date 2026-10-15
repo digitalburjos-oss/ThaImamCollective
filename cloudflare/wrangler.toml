@@ -1,0 +1,14 @@
+name = "indianmakers-site"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# ADMIN_EMAILS = "you@example.com"   # comma-separated; enables /admin for verified addresses
+# COMMIT = "your published commit"
+# CONTACT_TO = "configure for your own business"
+# MAIL_FROM = "configure for your own business"
+# RESEND_SEGMENT_ID = "configure for your own business"
+
+[[kv_namespaces]]
+binding = "SITE"
+id = "00000000000000000000000000000000"

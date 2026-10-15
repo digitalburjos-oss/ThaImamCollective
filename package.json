@@ -1,0 +1,16 @@
+{
+  "name": "the-indian-makers",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node scripts/build-seo.mjs && node scripts/build-worker.mjs",
+    "test": "node tests/seo.test.mjs",
+    "verify:live": "node scripts/verify-live.mjs",
+    "dev": "node scripts/dev-server.mjs",
+    "start": "node scripts/dev-server.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "linkedom": "0.18.12"
+  }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="./support.js"></script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-sans-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/brand/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/brand/favicon-192.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="hero-system.css?v=7">
+<link rel="stylesheet" href="/indian-makers.css">
+</head>
+<body>
+<x-dc>
+<footer class="db-foot" style="font-family:'Instrument Sans',system-ui,sans-serif">
+  <div class="db-foot-inner" style="max-width:76rem;margin:0 auto">
+    <div class="db-foot-top">
+      <div class="db-foot-brand">
+        <p class="db-foot-tag">Build more. <span>Spend less.</span></p>
+        <p class="db-foot-copy">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
+        <form class="db-foot-form" onsubmit="{{ subscribe }}" novalidate>
+          <label for="nl-email" class="db-foot-sr">Email address</label>
+          <input id="nl-email" type="email" required placeholder="you@company.com" value="{{ email }}" oninput="{{ setEmail }}" autocomplete="email"/>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="db-foot-hp" value="{{ hp }}" oninput="{{ setHp }}"/>
+          <button type="submit" disabled="{{ busy }}">{{ subLabel }}</button>
+        </form>
+        <p class="db-foot-note" style="{{ noteStyle }}" role="status">{{ note }}</p>
+        <p class="db-foot-contact"><a href="mailto:info@theimamcollective.com">info@theimamcollective.com</a><span aria-hidden="true">·</span><a href="https://wa.me/918547911745" target="_blank" rel="noopener">WhatsApp +91 85479 11745</a></p><p class="db-foot-contact"><a href="mailto:support@theimamcollective.com">Support</a><span aria-hidden="true">·</span><a href="mailto:contact@theimamcollective.com">Project enquiries</a></p>
+      </div>
+      <div class="db-foot-cols">
+        <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+          <nav class="db-foot-col" aria-label="{{ c.h }}">
+            <p class="db-foot-h">{{ c.h }}</p>
+            <ul>
+              <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="5"><li><a href="{{ l.href }}">{{ l.label }}</a></li></sc-for>
+            </ul>
+          </nav>
+        </sc-for>
+      </div>
+    </div>
+    <div class="db-foot-bar">
+      <p>© 2026 The Indian Makers. All rights reserved.</p>
+      <div class="db-foot-links"><a href="sitemap.xml">Sitemap</a><a href="/contact">Contact</a><button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/918547911745" target="_blank" rel="noopener" aria-label="Chat with The Indian Makers on WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:55;width:54px;height:54px;border-radius:16px;background:#07543A;color:#FAF8F0;display:grid;place-items:center;box-shadow:0 12px 28px -10px #0B211C;"> <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H7l-4 2 1.5-5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 9h8M8 13h5"/></svg></a>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:640}}">
+class Component extends DCLogic {
+  state = { email: "", hp: "", status: "idle", msg: "" };
+  cols = [
+    { h: "Platform", links: [["Business OS", "/business-os"], ["Indian Makers Automation", "/business-ai"], ["Growth", "/growth"], ["Studio", "/studio"], ["Industry Solutions", "/industries"]] },
+    { h: "People", links: [["Academy", "/academy"], ["Verified Talent", "/talent"], ["Jobs", "/jobs"], ["Insights", "/insights"]] },
+    { h: "Company", links: [["About", "/company"], ["Pricing", "/pricing"], ["Portfolio", "/portfolio"], ["Contact", "/contact"], ["Get Started", "/get-started"]] },
+  ].map((c) => ({ h: c.h, links: c.links.map(([label, href]) => ({ label, href })) }));
+  async subscribe(e) {
+    e.preventDefault();
+    const email = this.state.email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { this.setState({ status: "error", msg: "Please enter a valid email address." }); return; }
+    this.setState({ status: "busy", msg: "" });
+    try {
+      const r = await fetch("/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, website: this.state.hp }) });
+      if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || "failed"); }
+      this.setState({ status: "done", msg: "Thanks — you're subscribed.", email: "" });
+    } catch (err) {
+      this.setState({ status: "error", msg: "Subscriptions are unavailable right now. Please try again later." });
+    }
+  }
+  renderVals() {
+    const st = this.state.status;
+    return {
+      cols: this.cols, email: this.state.email, hp: this.state.hp,
+      setEmail: (e) => this.setState({ email: e.target.value }), setHp: (e) => this.setState({ hp: e.target.value }),
+      busy: st === "busy", subLabel: st === "busy" ? "Subscribing…" : st === "done" ? "Subscribed ✓" : "Subscribe",
+      note: this.state.msg || "Monthly field notes on automation and building software. No spam.",
+      noteStyle: st === "error" ? "color:#ff8a70" : st === "done" ? "color:#7ee2a0" : "",
+      subscribe: (e) => this.subscribe(e),
+      toTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
