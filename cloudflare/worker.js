@@ -6,7 +6,7 @@
 import { SEO_ROUTES } from "./seo-routes.js";
 
 const REPO = "digitalburjos-oss/ThaImamCollective";
-const ROUTE_ALIASES = {"/business-os":"/services/os","/business-ai":"/services/ai","/studio":"/services/studio","/growth":"/services/growth","/academy":"/services/academy","/talent":"/services/talent","/solutions":"/services","/portfolio":"/work"};
+const ROUTE_ALIASES = {"/business-os":"/services/os","/business-ai":"/services/ai","/studio":"/services/studio","/growth":"/services/growth","/academy":"/services/academy","/talent":"/services/talent"};
 const GENERATED_REDIRECTS = Object.fromEntries(Object.entries(SEO_ROUTES).map(([route, file]) => [file, route]));
 
 const PAGES = {

@@ -4,7 +4,5 @@
   "/studio": "/services/studio",
   "/growth": "/services/growth",
   "/academy": "/services/academy",
-  "/talent": "/services/talent",
-  "/solutions": "/services",
-  "/portfolio": "/work"
+  "/talent": "/services/talent"
 }

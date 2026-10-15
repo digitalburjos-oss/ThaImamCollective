@@ -1,0 +1,130 @@
+{
+  "checked": "2026-10-15",
+  "referencePageCount": 31,
+  "pages": [
+    {
+      "referencePath": "/",
+      "collectivePath": "/"
+    },
+    {
+      "referencePath": "/business-os",
+      "collectivePath": "/services/os"
+    },
+    {
+      "referencePath": "/business-ai",
+      "collectivePath": "/services/ai"
+    },
+    {
+      "referencePath": "/growth",
+      "collectivePath": "/services/growth"
+    },
+    {
+      "referencePath": "/studio",
+      "collectivePath": "/services/studio"
+    },
+    {
+      "referencePath": "/industries",
+      "collectivePath": "/industries"
+    },
+    {
+      "referencePath": "/academy",
+      "collectivePath": "/services/academy"
+    },
+    {
+      "referencePath": "/talent",
+      "collectivePath": "/services/talent"
+    },
+    {
+      "referencePath": "/jobs",
+      "collectivePath": "/jobs"
+    },
+    {
+      "referencePath": "/pricing",
+      "collectivePath": "/pricing"
+    },
+    {
+      "referencePath": "/company",
+      "collectivePath": "/company"
+    },
+    {
+      "referencePath": "/solutions",
+      "collectivePath": "/solutions"
+    },
+    {
+      "referencePath": "/portfolio",
+      "collectivePath": "/portfolio"
+    },
+    {
+      "referencePath": "/get-started",
+      "collectivePath": "/get-started"
+    },
+    {
+      "referencePath": "/contact",
+      "collectivePath": "/contact"
+    },
+    {
+      "referencePath": "/insights",
+      "collectivePath": "/insights"
+    },
+    {
+      "referencePath": "/insights/what-is-business-ai",
+      "collectivePath": "/insights/what-is-business-ai"
+    },
+    {
+      "referencePath": "/insights/when-should-a-company-automate-a-workflow",
+      "collectivePath": "/insights/when-should-a-company-automate-a-workflow"
+    },
+    {
+      "referencePath": "/insights/what-is-workflow-automation",
+      "collectivePath": "/insights/what-is-workflow-automation"
+    },
+    {
+      "referencePath": "/insights/ai-agent-vs-chatbot",
+      "collectivePath": "/insights/ai-agent-vs-chatbot"
+    },
+    {
+      "referencePath": "/insights/crm-vs-erp",
+      "collectivePath": "/insights/crm-vs-erp"
+    },
+    {
+      "referencePath": "/insights/what-makes-software-production-ready",
+      "collectivePath": "/insights/what-makes-software-production-ready"
+    },
+    {
+      "referencePath": "/insights/how-to-scope-an-mvp",
+      "collectivePath": "/insights/how-to-scope-an-mvp"
+    },
+    {
+      "referencePath": "/insights/mvp-vs-prototype",
+      "collectivePath": "/insights/mvp-vs-prototype"
+    },
+    {
+      "referencePath": "/insights/what-is-rbac",
+      "collectivePath": "/insights/what-is-rbac"
+    },
+    {
+      "referencePath": "/insights/what-is-evidence-based-learning",
+      "collectivePath": "/insights/what-is-evidence-based-learning"
+    },
+    {
+      "referencePath": "/insights/what-does-verified-professional-capability-mean",
+      "collectivePath": "/insights/what-does-verified-professional-capability-mean"
+    },
+    {
+      "referencePath": "/insights/skills-based-hiring-guide",
+      "collectivePath": "/insights/skills-based-hiring-guide"
+    },
+    {
+      "referencePath": "/insights/document-automation-in-logistics",
+      "collectivePath": "/insights/document-automation-in-logistics"
+    },
+    {
+      "referencePath": "/insights/real-estate-lead-response-automation",
+      "collectivePath": "/insights/real-estate-lead-response-automation"
+    },
+    {
+      "referencePath": "/insights/responsible-ai-checklist",
+      "collectivePath": "/insights/responsible-ai-checklist"
+    }
+  ]
+}

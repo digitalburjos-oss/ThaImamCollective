@@ -35,16 +35,6 @@
       "permanent": true
     },
     {
-      "source": "/solutions",
-      "destination": "/services",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio",
-      "destination": "/work",
-      "permanent": true
-    },
-    {
       "source": "/Homepage.dc.html",
       "destination": "/",
       "permanent": true
@@ -101,12 +91,12 @@
     },
     {
       "source": "/Solutions.dc.html",
-      "destination": "/services",
+      "destination": "/solutions",
       "permanent": true
     },
     {
       "source": "/Portfolio.dc.html",
-      "destination": "/work",
+      "destination": "/portfolio",
       "permanent": true
     },
     {
@@ -134,6 +124,18 @@
     {
       "source": "/",
       "destination": "/pages/home.html"
+    },
+    {
+      "source": "/catalogue",
+      "destination": "/pages/catalogue.html"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/pages/solutions.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/pages/portfolio.html"
     },
     {
       "source": "/expertise",
@@ -182,6 +184,62 @@
     {
       "source": "/privacy",
       "destination": "/pages/privacy.html"
+    },
+    {
+      "source": "/catalogue/company-administration",
+      "destination": "/pages/catalogue/company-administration.html"
+    },
+    {
+      "source": "/catalogue/customer-relationships",
+      "destination": "/pages/catalogue/customer-relationships.html"
+    },
+    {
+      "source": "/catalogue/sales-quotations",
+      "destination": "/pages/catalogue/sales-quotations.html"
+    },
+    {
+      "source": "/catalogue/finance-records",
+      "destination": "/pages/catalogue/finance-records.html"
+    },
+    {
+      "source": "/catalogue/tax-einvoicing",
+      "destination": "/pages/catalogue/tax-einvoicing.html"
+    },
+    {
+      "source": "/catalogue/procurement",
+      "destination": "/pages/catalogue/procurement.html"
+    },
+    {
+      "source": "/catalogue/inventory-warehousing",
+      "destination": "/pages/catalogue/inventory-warehousing.html"
+    },
+    {
+      "source": "/catalogue/people-hr",
+      "destination": "/pages/catalogue/people-hr.html"
+    },
+    {
+      "source": "/catalogue/payroll-workflows",
+      "destination": "/pages/catalogue/payroll-workflows.html"
+    },
+    {
+      "source": "/catalogue/projects-time",
+      "destination": "/pages/catalogue/projects-time.html"
+    },
+    {
+      "source": "/catalogue/document-management",
+      "destination": "/pages/catalogue/document-management.html"
+    },
+    {
+      "source": "/catalogue/approval-controls",
+      "destination": "/pages/catalogue/approval-controls.html"
+    },
+    {
+      "source": "/catalogue/automation-engine",
+      "destination": "/pages/catalogue/automation-engine.html"
+    },
+    {
+      "source": "/catalogue/communications-dashboards",
+      "destination": "/pages/catalogue/communications-dashboards.html"
     },
     {
       "source": "/expertise/crm-implementation",
@@ -278,6 +336,46 @@
     {
       "source": "/industries/restaurants-food-service",
       "destination": "/pages/industries/restaurants-food-service.html"
+    },
+    {
+      "source": "/industries/travel-tourism",
+      "destination": "/pages/industries/travel-tourism.html"
+    },
+    {
+      "source": "/industries/trading-distribution",
+      "destination": "/pages/industries/trading-distribution.html"
+    },
+    {
+      "source": "/industries/construction",
+      "destination": "/pages/industries/construction.html"
+    },
+    {
+      "source": "/industries/facility-management",
+      "destination": "/pages/industries/facility-management.html"
+    },
+    {
+      "source": "/industries/recruitment",
+      "destination": "/pages/industries/recruitment.html"
+    },
+    {
+      "source": "/industries/automotive",
+      "destination": "/pages/industries/automotive.html"
+    },
+    {
+      "source": "/industries/hospitality",
+      "destination": "/pages/industries/hospitality.html"
+    },
+    {
+      "source": "/industries/manufacturing",
+      "destination": "/pages/industries/manufacturing.html"
+    },
+    {
+      "source": "/industries/healthcare-administration",
+      "destination": "/pages/industries/healthcare-administration.html"
+    },
+    {
+      "source": "/industries/ecommerce-operations",
+      "destination": "/pages/industries/ecommerce-operations.html"
     },
     {
       "source": "/services/os",
