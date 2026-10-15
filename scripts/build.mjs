@@ -13,7 +13,7 @@ import {composeExperience} from '../src/experience.mjs';
 import {MODULES,catalogue,modulePage,moduleFaq,solutions,portfolio} from '../src/catalogue.mjs';
 const root=path.resolve(import.meta.dirname,'..'),dist=path.join(root,'dist');
 // A single generated stylesheet is the authority for every route and component.
-const styleSources=['public/site.css','public/corporate.css','public/engagement.css','public/hero-premium.css','src/styles/reference-system.css','src/styles/experience-bridge.css','src/styles/brand-typography.css'];
+const styleSources=['public/site.css','public/corporate.css','public/engagement.css','public/hero-premium.css','src/styles/collective-experience.css','src/styles/brand-typography.css'];
 fs.writeFileSync(path.join(root,'public/experience.css'),styleSources.map(file=>fs.readFileSync(path.join(root,file),'utf8')).join('\n'));
 const definitions=[
 ['/','Intelligent systems. Thoughtful design. Worldwide.','Connected business systems, useful AI, thoughtful design and digital growth. The collective works with teams worldwide to make the next chapter work better.',pages.home],
