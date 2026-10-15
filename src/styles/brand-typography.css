@@ -6,14 +6,14 @@ main :is(.lead,.section-heading p,.topic-card p,.feature-grid p,.detail-grid p,.
 main :is(.text-link,.back-link,.contact-channel,.article-body,.detail-reading){color:var(--text-primary)}
 main :is(.text-link:hover,.back-link:hover){color:var(--text-primary);text-decoration-color:var(--text-accent)}
 main :is(h2 em,.feature-mark),#capabilities .muted-heading{color:var(--text-accent)}
-.cinematic-hero .cx-hero-copy :is(h1,h2,p,.lead,.hero-summary,.article-byline,.article-meta,.breadcrumbs,.breadcrumbs span,.breadcrumbs a){color:var(--text-inverse)!important}
-.cinematic-hero .cx-hero-copy h1.cx-hero-title--glossy{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:var(--text-inverse);filter:none;text-shadow:none;animation:cx-hero-in .8s var(--ease) both}
-.cinematic-hero .cx-hero-copy h1 :is(span,.cx-hero-accent){background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--text-accent)!important;-webkit-text-fill-color:var(--text-accent);animation:none}
+.corporate-hero .cx-hero-copy :is(h1,h2,p,.lead,.hero-summary,.article-byline,.article-meta,.breadcrumbs,.breadcrumbs span,.breadcrumbs a){color:var(--text-inverse)!important}
+.corporate-hero .cx-hero-copy h1.cx-hero-title--glossy{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:var(--text-inverse);filter:none;text-shadow:none;animation:cx-hero-in .8s var(--ease) both}
+.corporate-hero .cx-hero-copy h1 :is(span,.cx-hero-accent){background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--text-accent)!important;-webkit-text-fill-color:var(--text-accent);animation:none}
 .cinematic-hero :is(.hero-eyebrow,.hero-context-head,.hero-context li>span){color:var(--text-accent)}
 .cinematic-hero :is(.hero-context,.orchestration) :is(h2,h3,strong,p,small,span,a,button){color:var(--text-inverse)}
 .cinematic-hero :is(.preview-indicator,.scene-title>div>span,.scene-run-label,.signal-step small,.scene-record>div>span,.scene-integrations>span,.scene-integrations>div,.orchestration-bottom>span){color:var(--text-inverse)}
 .cinematic-hero .scenario-tabs button[aria-selected=true],.button.primary,.button.dark,.footer .subscribe-row button{color:var(--text-inverse)}
-.cinematic-hero .cx-hero-copy :is(.button.outline,.button.hero-secondary,.button.text),.cinematic-hero .tag-list span{color:var(--text-inverse)}
+.corporate-hero .cx-hero-copy :is(.button.outline,.button.hero-secondary,.button.text),.cinematic-hero .tag-list span{color:var(--text-inverse)}
 .footer :is(h2,p,span,a,button,.footer-actions a,.analytics-settings,.consent){color:var(--text-inverse)}
 .footer :is(a:hover,button:hover){color:var(--text-inverse);text-decoration-color:var(--text-accent)}
 .footer input[type=email]{color:var(--text-inverse)}
@@ -33,3 +33,13 @@ input::placeholder,textarea::placeholder{color:var(--text-secondary)}
 /* Inverse roles keep brand ivory readable on every aubergine surface. */
 main :is(.practice-section,.approach-section,.brief-card,.mini-sidebar) :is(h1,h2,h3,h4,p,span,strong,small,a,li){color:var(--text-inverse)}
 .cinematic-hero .record-state.is-review,.footer .form-status{color:var(--text-inverse)}
+
+.cx-page-hero .cx-hero-copy :is(h1,h2,p,.lead,.hero-summary,.article-byline,.article-meta,.breadcrumbs,.breadcrumbs a,.breadcrumbs span){color:var(--text-primary)}
+.cx-page-hero .hero-context :is(h2,h3,strong,p,small,a){color:var(--text-inverse)}
+/* The product preview is a paper surface, even inside the dark homepage. */
+.corporate-hero .orchestration :is(h2,h3,strong,p,small,span,a,button),.corporate-hero .orchestration .scene-integrations>div{color:var(--text-primary)}
+.corporate-hero .orchestration :is(.preview-indicator,.scene-title>div>span,.scene-run-label,.signal-step small,.scene-record>div>span,.scene-integrations>span,.orchestration-bottom>span){color:var(--text-secondary)}
+.corporate-hero .orchestration .scenario-tabs button[aria-selected=true]{background:#28142d;color:var(--text-inverse)}
+.corporate-hero .orchestration .record-state.is-review{color:var(--text-primary)}
+.cx-page-hero .cx-hero-copy :is(.button.outline,.button.text){color:var(--text-primary)}
+.cx-page-hero .tag-list span{color:var(--text-primary)}

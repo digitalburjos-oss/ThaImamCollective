@@ -87,3 +87,9 @@ The reference implementation is adapted with the Collective brand palette and ar
 Production build and all 31 automated tests pass. The new carousel regression covers previous/next, Home/End boundaries, disabled controls, announcements and reduced-motion behavior. Chromium repeated all 178 desktop/mobile route checks with zero detected issues or page JavaScript errors. Real carousel movement and keyboard reset passed at 1440px, 390px and 320px. Desktop and mobile carousel screenshots were visually inspected.
 
 Computed browser colors match the identity exactly: hero title `rgb(251,248,240)`, highlighted title `rgb(238,72,35)`, card title `rgb(40,20,45)`, and supporting card copy `rgb(115,103,116)`. This release retains the previous clean-URL files and shared experience system.
+
+## Collective frontend audit
+
+Restored the PR9 visual direction while retaining the current horizontal carousel and route fixes. Reproduced and fixed conflicting header min-height, universal full-screen hero treatment, hidden footer description, missing homepage supporting copy, and inverse text applied to the paper product preview. Replaced two reference styling layers with a Collective stylesheet. Footer groups, newsletter and legal links reflow at mobile widths; support controls have reserved bottom space.
+
+Validation: production build and 31 automated tests; browser sweep of all 89 routes at 1440px and 390px, plus carousel interactions at 1440px, 390px and 320px, drawer open/close, search Escape, and reduced motion. Visual screenshots inspected for the homepage, mobile homepage and footer. No deployment is performed by this change.

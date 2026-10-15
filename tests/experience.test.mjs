@@ -5,7 +5,7 @@ import {parseHTML} from 'linkedom';
 import {JSDOM} from 'jsdom';
 const dist=new URL('../dist/',import.meta.url);const routes=JSON.parse(fs.readFileSync(new URL('seo-routes.json',dist)));
 const read=p=>fs.readFileSync(new URL(p.replace(/^\//,''),dist),'utf8');
-test('all public pages use one experience system and the same reference hero hierarchy',()=>{
+test('all public pages use one experience system and a shared semantic hero hierarchy',()=>{
  for(const [route,file]of Object.entries(routes)){
   const {document:d}=parseHTML(read(file));
   assert.deepEqual([...d.querySelectorAll('link[rel=stylesheet]')].map(n=>n.getAttribute('href')),['/experience.css'],route);
@@ -18,7 +18,7 @@ test('all public pages use one experience system and the same reference hero hie
   assert(d.querySelector('.footer img[src="/brand/logo-footer.png"]'),route);
  }
 });
-test('reference mobile sheet closes, restores scroll and traps tab within its open controls',async()=>{
+test('mobile sheet closes, restores scroll and traps tab within its open controls',async()=>{
  const dom=new JSDOM(read(routes['/contact']),{url:'https://theimamcollective.com/contact',runScripts:'outside-only'});
  const w=dom.window;w.matchMedia=()=>({matches:true,addEventListener(){}});
  w.eval(read('site.js'));w.eval(read('experience.js'));

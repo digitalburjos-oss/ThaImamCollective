@@ -2,7 +2,7 @@ import {parseHTML} from 'linkedom';
 import {services} from './content.mjs';
 import {esc,arrow} from './components.mjs';
 
-// Match the reference's section > content > two-column grid > copy/panel hierarchy.
+// Keep a shared semantic hero hierarchy while allowing distinct Collective layouts.
 // All original content and interactive hooks stay in their original source order.
 export function composeExperience(body,route,breadcrumb=''){
  const {document:d}=parseHTML('<!doctype html><html><body>'+body+'</body></html>');
