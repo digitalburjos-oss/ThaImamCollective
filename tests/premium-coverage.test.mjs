@@ -17,3 +17,8 @@ test('all reference sitemap pages have an accessible Collective counterpart',()=
 test('fourteen module pages are linked and describe visible configuration scope',()=>{
  assert.equal(MODULES.length,14);const index=read(routes['/catalogue']);for(const m of MODULES){assert(index.includes('href="'+m.url+'"'));const {document:d}=parseHTML(read(routes[m.url]));assert(d.querySelector('.module-scope-note'));assert(d.querySelector('main').textContent.includes(m.acceptance));const graph=JSON.parse(d.querySelector('[type="application/ld+json"]').textContent)['@graph'];assert(graph.some(x=>x['@type']==='Service'&&x.name===m.name));for(const q of graph.find(x=>x['@type']==='FAQPage').mainEntity)assert(d.querySelector('main').textContent.includes(q.acceptedAnswer.text));}
 });
+
+test('every hero has decorative cinema layers and every page has three practical next steps',()=>{
+ for(const [route,file] of Object.entries(routes)){const {document:d}=parseHTML(read(file));const cinema=d.querySelector('.cinematic-hero .hero-cinema');assert(cinema,route);assert.equal(cinema.getAttribute('aria-hidden'),'true');assert.equal(cinema.querySelectorAll('img').length,2);for(const img of cinema.querySelectorAll('img'))assert.equal(img.getAttribute('alt'),'');assert.equal(d.querySelectorAll('.next-steps ol>li').length,3,route);}
+ const {document:d}=parseHTML(read(routes['/company']));assert.equal(d.querySelector('.wide-photo'),null);
+});

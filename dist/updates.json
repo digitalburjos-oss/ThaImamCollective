@@ -1,6 +1,17 @@
 {
   "updates": [
     {
+      "id": "project-planning-october-2026",
+      "type": "offer",
+      "title": "Plan the first step before the full build.",
+      "body": "Bring one workflow, website or automation question. Request an initial scope discussion to identify the work worth starting with.",
+      "startsAt": "2026-10-15T00:00:00+04:00",
+      "endsAt": "2026-11-15T23:59:59+04:00",
+      "terms": "Initial discussion only. Availability is confirmed by the team. Implementation, audits and deliverables require a separate agreed quote.",
+      "href": "/get-started",
+      "label": "Request a scope discussion \u2192"
+    },
+    {
       "id": "choose-your-starting-point",
       "type": "announcement",
       "title": "One problem is enough to start.",
