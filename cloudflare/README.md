@@ -15,3 +15,11 @@ The Academy, Talent and Jobs sections are marketing pages; this repository does 
 - KV namespace `collective-site-SITE` (`a4c35cd80b734ca0bdbdecd7da48a8bc`), bound as `SITE`
 - Pinned commit: `7821e325f22dc8af4b6558b879b1a371466ff05d`
 - Not yet configured: `RESEND_API_KEY` secret (the `/api/*` endpoints return 503 until it is set) and custom-domain routes for `theimamcollective.com`.
+
+## Static asset hosting and clean URLs
+
+The current public host serves static assets directly: clean URLs such as `/catalogue` were returning 404 while `/pages/catalogue` served their generated document. A `vercel.json` rewrite or the optional Worker route module does not configure an asset-only deployment.
+
+The build now also writes `/catalogue.html`, `/services/ai.html` and the equivalent file for every canonical route. Cloudflare's default HTML handling serves those files at the extensionless public URLs. Keep default HTML handling enabled when publishing `dist`; do not enable a single-page fallback that returns the homepage for missing pages. `_redirects` preserves the legacy aliases and canonicalizes the internal page URLs.
+
+Publish the complete rebuilt `dist` directory after merging the routing fix. The optional KV mirror Worker remains a separate deployment method and still requires its `COMMIT` to match the release. Its checked-in historical commit does not describe the current asset-only host. Run the live verification after publishing to check all 89 public URLs, not just the homepage.
