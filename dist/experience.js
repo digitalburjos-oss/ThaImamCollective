@@ -60,3 +60,39 @@
  wide.addEventListener?.('change',event=>{if(event.matches)close();});
  sync();
 })();
+
+// Native scrolling retains touch, keyboard and no-JavaScript access to every capability.
+(() => {
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ document.querySelectorAll('[data-capability-carousel]').forEach(root=>{
+  const track=root.querySelector('.horizontal-track');
+  const cards=[...track.children];
+  const previous=root.querySelector('[data-carousel-prev]');
+  const next=root.querySelector('[data-carousel-next]');
+  const position=root.querySelector('[data-carousel-position]');
+  const status=root.querySelector('[data-carousel-status]');
+  const step=()=>cards[0].getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap);
+  const update=()=>{
+   previous.disabled=track.scrollLeft<=3;
+   next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-3;
+   const first=Math.min(cards.length,Math.round(track.scrollLeft/step())+1);
+   const visible=Math.max(1,Math.round((track.clientWidth+18)/step()));
+   position.textContent=`${first}–${Math.min(cards.length,first+visible-1)} / ${cards.length}`;
+  };
+  const move=direction=>{
+   const destination=direction==='start'?0:direction==='end'?track.scrollWidth-track.clientWidth:track.scrollLeft+direction*step();
+   track.scrollTo({left:destination,behavior:reduced.matches?'instant':'smooth'});
+   const index=Math.max(0,Math.min(cards.length-1,Math.round(destination/step())));
+   status.textContent=`Browsing ${cards[index].querySelector('h3').textContent}.`;
+  };
+  previous.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+  track.addEventListener('keydown',event=>{
+   if(event.target!==track)return;
+   const direction={ArrowLeft:-1,ArrowRight:1,Home:'start',End:'end'}[event.key];
+   if(direction===undefined)return;event.preventDefault();move(direction);
+  });
+  track.addEventListener('scroll',update,{passive:true});
+  if('ResizeObserver' in window)new ResizeObserver(update).observe(track);
+  update();
+ });
+})();

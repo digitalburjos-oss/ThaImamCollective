@@ -81,3 +81,9 @@ An ephemeral Chromium package enabled browser testing without adding a project d
 Real-browser checks also passed mobile-sheet opening and closing, keyboard search dismissal, scroll restoration and reduced-motion cards returning to normal document flow. Visual review covered desktop homepage, footer, mobile homepage and the capability/Explore sheet. That review caught a legacy mobile rule hiding the header CTA; it was corrected and the full browser route checks were repeated successfully.
 
 The reference implementation is adapted with the Collective brand palette and artwork. These checks establish page consistency and working behavior; they do not claim certified pixel-for-pixel parity with DigitalBurj or a completed public deployment.
+
+## Horizontal capabilities and brand text colors
+
+Production build and all 31 automated tests pass. The new carousel regression covers previous/next, Home/End boundaries, disabled controls, announcements and reduced-motion behavior. Chromium repeated all 178 desktop/mobile route checks with zero detected issues or page JavaScript errors. Real carousel movement and keyboard reset passed at 1440px, 390px and 320px. Desktop and mobile carousel screenshots were visually inspected.
+
+Computed browser colors match the identity exactly: hero title `rgb(251,248,240)`, highlighted title `rgb(238,72,35)`, card title `rgb(40,20,45)`, and supporting card copy `rgb(115,103,116)`. This release retains the previous clean-URL files and shared experience system.
