@@ -1,4 +1,4 @@
-/* Responsive, accessible crossfade for the The Indian Makers photo series.
+/* Responsive, accessible crossfade for the Collective photo series.
    Only the first slide loads up front; each next slide is fetched one interval ahead. */
 (function () {
   if (customElements.get('hero-reel')) return;

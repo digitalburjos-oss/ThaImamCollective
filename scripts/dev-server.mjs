@@ -27,10 +27,10 @@ const server = http.createServer(async (req,res) => {
   if(decoded==='/index.html'){res.writeHead(302,{Location:'/'}).end();return;}
   const file = path.resolve(root,'.'+(routes[decoded] || decoded));
   if(!file.startsWith(root+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile()) {
-    res.writeHead(404,{'Content-Type':'text/html; charset=utf-8'}).end('<!doctype html><html lang="en"><meta name="viewport" content="width=device-width"><title>Page not found | The Indian Makers</title><body style="background:#FAF8F0;color:#0B211C;font:18px system-ui;padding:10vw"><h1>That page could not be found.</h1><p><a href="/">Return to The Indian Makers</a></p></body></html>');return;
+    res.writeHead(404,{'Content-Type':'text/html; charset=utf-8'}).end('<!doctype html><html lang="en"><meta name="viewport" content="width=device-width"><title>Page not found | Innovation.Mastery.Automation.Marketing Collective</title><body style="background:#FAF8F0;color:#0B211C;font:18px system-ui;padding:10vw"><h1>That page could not be found.</h1><p><a href="/">Return to Innovation.Mastery.Automation.Marketing Collective</a></p></body></html>');return;
   }
   res.writeHead(200,{'Content-Type':types[file.split('.').pop()]||'application/octet-stream','Cache-Control':'no-cache'});
   if(req.method==='HEAD')res.end();else fs.createReadStream(file).pipe(res);
 });
 const port=Number(process.env.PORT||3000);
-server.listen(port,'0.0.0.0',()=>console.log(`The Indian Makers development server on port ${port}`));
+server.listen(port,'0.0.0.0',()=>console.log(`Innovation.Mastery.Automation.Marketing Collective development server on port ${port}`));

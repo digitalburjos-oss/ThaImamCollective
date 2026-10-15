@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
   if (d.name.length < 2 || !EMAIL.test(d.email) || d.message.length < 20) return res.status(400).json({ error: "Please complete the required fields." });
 
   const to = process.env.CONTACT_TO || "contact@theimamcollective.com";
-  const from = process.env.MAIL_FROM || "The Indian Makers <info@theimamcollective.com>";
+  const from = process.env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
   const rows = [["Topic", d.topic], ["Name", d.name], ["Email", d.email], ["Company", d.company], ["Phone", d.phone], ["Timeline", d.timeline], ["Source", d.source]]
     .filter(([, v]) => v).map(([k, v]) => `<tr><td style="padding:6px 14px 6px 0;color:#6b746f">${esc(k)}</td><td style="padding:6px 0"><b>${esc(v)}</b></td></tr>`).join("");
   const html = `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:560px"><h2 style="margin:0 0 12px">New website enquiry</h2><table style="font-size:14px">${rows}</table><p style="margin:16px 0 4px;color:#6b746f;font-size:13px">Message</p><div style="white-space:pre-wrap;font-size:15px;line-height:1.55;border-left:3px solid #F36B21;padding-left:12px">${esc(d.message)}</div></div>`;
@@ -28,8 +28,8 @@ module.exports = async (req, res) => {
   }
   // Courtesy confirmation to the visitor (best effort — never fails the request).
   resend("/emails", {
-    from, to: [d.email], reply_to: to, subject: "We received your message — The Indian Makers",
-    html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Hi ${esc(d.name.split(" ")[0])},</p><p>Thanks for contacting The Indian Makers. A specialist will reply within one business day.</p><p style="color:#6b746f;font-size:13px">Your message:<br>${esc(d.message).replace(/\n/g, "<br>")}</p><p>— The The Indian Makers team</p></div>`,
+    from, to: [d.email], reply_to: to, subject: "We received your message — The Collective",
+    html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Hi ${esc(d.name.split(" ")[0])},</p><p>Thanks for contacting The Collective. A specialist will reply within one business day.</p><p style="color:#6b746f;font-size:13px">Your message:<br>${esc(d.message).replace(/\n/g, "<br>")}</p><p>— The Collective team</p></div>`,
   }).catch(() => {});
   return res.status(200).json({ ok: true });
 };

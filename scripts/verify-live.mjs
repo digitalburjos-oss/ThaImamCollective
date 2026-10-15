@@ -10,16 +10,16 @@ const routes = JSON.parse(fs.readFileSync(new URL('../dist/seo-routes.json', imp
 // Release-specific metadata expectations: detect stale deployments even when
 // routes return HTTP 200 and the sitemap is present.
 const expectedTitles = {
-  '/': 'The Indian Makers | Automation & Marketing',
-  '/business-os': 'Business Management Software for growing businesses | The Indian Makers',
-  '/business-ai': 'AI Automation for Growing Businesses | The Indian Makers',
-  '/studio': 'Web & App Development Services | The Indian Makers',
-  '/industries': 'Industry Business Software Solutions | The Indian Makers'
+  '/': 'Innovation.Mastery.Automation.Marketing Collective — Build more. Spend less.',
+  '/business-os': 'Business Management Software for growing businesses | The Collective',
+  '/business-ai': 'AI Automation for Growing Businesses | The Collective',
+  '/studio': 'Web & App Development Services | The Collective',
+  '/industries': 'Industry Business Software Solutions | The Collective'
 };
 let failures = 0;
 async function check(route, inspect) {
   try {
-    const res = await fetch(target.origin + route, { redirect: 'manual', signal: AbortSignal.timeout(20000), headers: {'User-Agent':'The Indian Makers-Release-Check/1.0'} });
+    const res = await fetch(target.origin + route, { redirect: 'manual', signal: AbortSignal.timeout(20000), headers: {'User-Agent':'The Collective-Release-Check/1.0'} });
     await inspect(res);
     console.log('PASS', route);
   } catch (err) { failures++; console.error('FAIL', route, err.message); }
@@ -30,11 +30,11 @@ for (const route of Object.keys(routes)) await check(route, async res => {
   const {document} = parseHTML(html);
   assert.equal(document.querySelector('link[rel="canonical"]')?.getAttribute('href'), origin + route, 'Canonical');
   assert(document.querySelector('#seo-prerender'), 'SEO HTML release is missing');
-  assert(document.querySelector('#indianmakers-schema'), 'Brand structured data is missing');
+  assert(document.querySelector('#brand-schema'), 'Brand structured data is missing');
   const expected = parseHTML(fs.readFileSync(new URL('../dist' + routes[route], import.meta.url), 'utf8')).document;
-  assert.deepEqual(JSON.parse(document.querySelector('#indianmakers-schema').textContent), JSON.parse(expected.querySelector('#indianmakers-schema').textContent), 'Current structured data mismatch (possible stale deployment)');
+  assert.deepEqual(JSON.parse(document.querySelector('#brand-schema').textContent), JSON.parse(expected.querySelector('#brand-schema').textContent), 'Current structured data mismatch (possible stale deployment)');
   const title = document.querySelector('title')?.textContent?.trim();
-  assert(title?.includes('The Indian Makers'), 'The Indian Makers title missing');
+  assert(title?.includes('Collective'), 'Collective brand title missing');
   assert(document.querySelector('meta[name="description"]')?.getAttribute('content')?.trim(), 'Meta description missing');
   if (expectedTitles[route]) assert.equal(title, expectedTitles[route], 'Current release title mismatch (possible stale deployment)');
 

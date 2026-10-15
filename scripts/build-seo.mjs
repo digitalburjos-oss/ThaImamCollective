@@ -12,6 +12,15 @@ const write = (p, value) => { fs.mkdirSync(path.dirname(p), { recursive: true })
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const json = value => JSON.stringify(value).replace(/</g, '\\u003c');
 const origin = 'https://theimamcollective.com';
+// One place for brand strings. The full name is the legal/identity form; the
+// short form is the conversational name used in prose, and the wordmark is the
+// dotted form rendered in header/footer lockups.
+const BRAND = {
+  name: 'Innovation.Mastery.Automation.Marketing Collective',
+  wordmark: 'Innovation.Mastery.Automation.Marketing',
+  short: 'The Collective',
+  tagline: 'Build more. Spend less.'
+};
 const loadModule = async file => import('data:text/javascript;base64,' + Buffer.from(read(file)).toString('base64'));
 const { PAGES, PLANS } = await loadModule('pages.js');
 const { ARTICLES, CATEGORIES } = await loadModule('articles.js');
@@ -22,44 +31,44 @@ const routeFiles = {
   '/portfolio':'Portfolio', '/get-started':'GetStarted', '/contact':'Contact', '/insights':'Insights'
 };
 const titles = {
-  '/':'The Indian Makers | Automation & Marketing',
-  '/business-os':'Business Management Software for growing businesses | The Indian Makers',
-  '/business-ai':'AI Automation for Growing Businesses | The Indian Makers',
-  '/growth':'SEO, AI Search & Digital Growth Services | The Indian Makers',
-  '/studio':'Web & App Development Services | The Indian Makers',
-  '/industries':'Industry Business Software Solutions | The Indian Makers',
-  '/academy':'The Indian Makers Academy | Practical Technology Learning',
-  '/talent':'Verified Talent & Evidence-Based Hiring | The Indian Makers',
-  '/jobs':'Jobs & Professional Opportunities | The Indian Makers',
-  '/pricing':'Business Software & Service Pricing | The Indian Makers',
-  '/company':'About The Indian Makers | UAE Technology Services',
-  '/solutions':'Business Technology Solutions | The Indian Makers',
-  '/portfolio':'Software & Automation Project Examples | The Indian Makers',
-  '/get-started':'Start Your The Indian Makers Project | Business Technology',
-  '/contact':'Contact The Indian Makers | Book a Free Process Review',
-  '/insights':'Software, AI & Automation Insights | The Indian Makers'
+  '/':'Innovation.Mastery.Automation.Marketing Collective — Build more. Spend less.',
+  '/business-os':'Business Management Software for growing businesses | The Collective',
+  '/business-ai':'AI Automation for Growing Businesses | The Collective',
+  '/growth':'SEO, AI Search & Digital Growth Services | The Collective',
+  '/studio':'Web & App Development Services | The Collective',
+  '/industries':'Industry Business Software Solutions | The Collective',
+  '/academy':'The Collective Academy | Practical Technology Learning',
+  '/talent':'Verified Talent & Evidence-Based Hiring | The Collective',
+  '/jobs':'Jobs & Professional Opportunities | The Collective',
+  '/pricing':'Business Software & Service Pricing | The Collective',
+  '/company':'About Innovation.Mastery.Automation.Marketing Collective | Global Technology Services',
+  '/solutions':'Business Technology Solutions | The Collective',
+  '/portfolio':'Software & Automation Project Examples | The Collective',
+  '/get-started':'Start Your Project | The Collective',
+  '/contact':'Contact The Collective | Book a Free Process Review',
+  '/insights':'Software, AI & Automation Insights | The Collective'
 };
 // Human-reviewed search snippets for commercial pages. These describe the existing
 // service catalogue, not guaranteed capabilities, rankings, or customer outcomes.
 const seoDescriptions = {
-  '/company': 'Meet The Indian Makers, a technology partner for growing businesses: connected business software, AI automation, SEO, web and app development, and learning.',
-  '/solutions': 'Find The Indian Makers solutions for disconnected CRM and ERP data, manual approvals, document processing, lead follow-up and custom software needs.',
-  '/pricing': 'Compare The Indian Makers business software plans, CRM and ERP modules, AI add-ons, and separately quoted web development, implementation and SEO services.',
-  '/': 'The Indian Makers provides CRM and ERP business software, AI automation, SEO, and custom web and app development for growing businesses.',
-  '/business-os': 'Explore The Indian Makers Business OS for growing businesses: CRM, invoicing, accounting, HR, payroll, inventory, projects and connected business workflows.',
-  '/business-ai': 'Discover The Indian Makers AI agents for customer service, sales, finance and operations, with controlled workflows and integration options for growing businesses.',
-  '/growth': 'The Indian Makers helps businesses improve SEO, answer engine optimisation and AI search visibility with crawlable content, clear answers and measured enquiries.',
-  '/studio': 'The Indian Makers Studio builds custom websites, web applications, mobile apps, ERP extensions and API integrations for growing businesses.',
-  '/industries': 'Explore configurable The Indian Makers business software for UAE sectors including logistics, restaurants, retail, services and other SME operations.'
+  '/company': 'Meet Innovation.Mastery.Automation.Marketing Collective, a technology partner for growing businesses: connected business software, AI automation, SEO, web and app development, and learning.',
+  '/solutions': 'Find The Collective solutions for disconnected CRM and ERP data, manual approvals, document processing, lead follow-up and custom software needs.',
+  '/pricing': 'Compare The Collective business software plans, CRM and ERP modules, AI add-ons, and separately quoted web development, implementation and SEO services.',
+  '/': 'Innovation.Mastery.Automation.Marketing Collective provides CRM and ERP business software, AI automation, SEO, and custom web and app development for growing businesses.',
+  '/business-os': 'Explore The Collective Business OS for growing businesses: CRM, invoicing, accounting, HR, payroll, inventory, projects and connected business workflows.',
+  '/business-ai': 'Discover The Collective AI agents for customer service, sales, finance and operations, with controlled workflows and integration options for growing businesses.',
+  '/growth': 'The Collective helps businesses improve SEO, answer engine optimisation and AI search visibility with crawlable content, clear answers and measured enquiries.',
+  '/studio': 'The Collective Studio builds custom websites, web applications, mobile apps, ERP extensions and API integrations for growing businesses.',
+  '/industries': 'Explore configurable The Collective business software for logistics, restaurants, retail, services, travel, property and other SME operations.'
 };
 const org = {
-  '@type':'Organization', '@id':origin+'/#organization', name:'The Indian Makers', alternateName:'Indian Makers', url:origin+'/',
-  description:'The Indian Makers provides business software, AI automation, digital growth, custom software development, industry solutions, practical learning and verified talent.',
+  '@type':'Organization', '@id':origin+'/#organization', name:BRAND.name, alternateName:'Collective', url:origin+'/',
+  description:'Innovation.Mastery.Automation.Marketing Collective provides business software, AI automation, digital growth, custom software development, industry solutions, practical learning and verified talent.',
   logo:{"@type":"ImageObject", url:origin+"/brand/favicon-512.png", width:512, height:512},
   image:origin+'/brand/opengraph.png', email:'info@theimamcollective.com', telephone:'+918547911745',
   contactPoint:{'@type':'ContactPoint', contactType:'customer support', email:'support@theimamcollective.com', telephone:'+918547911745', url:origin+'/contact'}
 };
-const website = {'@type':'WebSite', '@id':origin+'/#website', url:origin+'/', name:'The Indian Makers', alternateName:['Indian Makers','theimamcollective.com'], publisher:{'@id':org['@id']}, inLanguage:'en'};
+const website = {'@type':'WebSite', '@id':origin+'/#website', url:origin+'/', name:BRAND.name, alternateName:['Collective','theimamcollective.com'], publisher:{'@id':org['@id']}, inLanguage:'en'};
 const docs = new Map();
 function source(name) {
   if (!docs.has(name)) docs.set(name, parseHTML(read(name+'.dc.html')).document);
@@ -111,7 +120,7 @@ function renderComponent(name, props, route, styles) {
       return `<picture aria-hidden="true" style="position:absolute;inset:0;z-index:-2"><source media="(max-width:700px)" srcset="/media/${esc(id)}-m.webp"><img src="/media/${esc(id)}-d.webp" alt="" fetchpriority="high" style="width:100%;height:100%;object-fit:cover"></picture>`;
     }
     // A non-JavaScript fallback must not submit an unhandled form (including PII).
-    if(tag==='form') return '<p><a href="mailto:contact@theimamcollective.com">Email contact@theimamcollective.com</a> or <a href="https://wa.me/918547911745">contact The Indian Makers on WhatsApp</a>.</p>';
+    if(tag==='form') return '<p><a href="mailto:contact@theimamcollective.com">Email contact@theimamcollective.com</a> or <a href="https://wa.me/918547911745">contact The Collective on WhatsApp</a>.</p>';
     let attrs='';
     for(const a of node.attributes) {
       if(/^on|^hint-|^style-|^data-reveal|^data-delay|^ref$/.test(a.name)) continue;
@@ -132,7 +141,7 @@ for(const route of allRoutes) {
   const name=article?'Article':routeFiles[route];
   const original=source(name);
   const document=parseHTML(read(name+'.dc.html')).document;
-  const title=article?article.title+' | The Indian Makers Insights':titles[route];
+  const title=article?article.title+' | The Collective Insights':titles[route];
   const description=article?.description || seoDescriptions[route] || original.querySelector('meta[name="description"]')?.getAttribute('content') || org.description;
   const canonical=origin+route;
   const image=article?new URL(article.image,origin+'/').href:org.image;
@@ -144,12 +153,12 @@ for(const route of allRoutes) {
     schemaPage.mainEntity=questions.map((item,i)=>({'@type':'Question','@id':canonical+'#question-'+(i+1),name:item.q,acceptedAnswer:{'@type':'Answer',text:item.a}}));
   }
   if(route==='/insights') {
-    const list={'@type':'ItemList','@id':canonical+'#articles',name:'The Indian Makers Insights',numberOfItems:ARTICLES.length,itemListElement:ARTICLES.map((a,i)=>({'@type':'ListItem',position:i+1,name:a.title,url:origin+'/insights/'+a.slug}))};
+    const list={'@type':'ItemList','@id':canonical+'#articles',name:'The Collective Insights',numberOfItems:ARTICLES.length,itemListElement:ARTICLES.map((a,i)=>({'@type':'ListItem',position:i+1,name:a.title,url:origin+'/insights/'+a.slug}))};
     graph.push(list);
     schemaPage.mainEntity={'@id':list['@id']};
   }
   if(route!=='/') {
-    const items=[{name:'The Indian Makers',item:origin+'/'}];
+    const items=[{name:'The Collective',item:origin+'/'}];
     if(article)items.push({name:'Insights',item:origin+'/insights'});
     items.push({name:article?.title || PAGES[route.slice(1)]?.crumb || title.split(' | ')[0],item:canonical});
     graph.push({'@type':'BreadcrumbList','@id':canonical+'#breadcrumb',itemListElement:items.map((x,i)=>({'@type':'ListItem',position:i+1,...x}))});
@@ -178,24 +187,24 @@ for(const route of allRoutes) {
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<meta name="application-name" content="The Indian Makers">
-<meta property="og:site_name" content="The Indian Makers">
+<meta name="application-name" content="Collective">
+<meta property="og:site_name" content="${esc(BRAND.name)}">
 <meta property="og:type" content="${article?'article':'website'}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${image}">
-<meta property="og:image:alt" content="${esc(article?.title||'The Indian Makers — Build more. Spend less.')}">
+<meta property="og:image:alt" content="${esc(article?.title||BRAND.name+' — '+BRAND.tagline)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${image}">
-<script type="application/ld+json" id="indianmakers-schema">${json({'@context':'https://schema.org','@graph':graph})}</script>\n`);
+<script type="application/ld+json" id="brand-schema">${json({'@context':'https://schema.org','@graph':graph})}</script>\n`);
   const styles=new Set();
   const snapshot=renderComponent(name,{},route,styles);
   const staticDoc=parseHTML('<html><body>'+snapshot+'</body></html>').document;
   const header=staticDoc.querySelector('.db-site-header .db-nav-inner');
-  if(header) header.querySelector('a[aria-label="The Indian Makers home"]').insertAdjacentHTML('afterend','<details class="db-fallback-menu"><summary aria-label="Open navigation"><span class="db-fallback-desktop">Ecosystem ⌄</span><svg class="db-fallback-mobile" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></summary><nav aria-label="Site navigation">'+Object.keys(routeFiles).map(url=>'<a href="'+url+'">'+esc(url==='/'?'Home':url==='/business-ai'?'Indian Makers Automation':PAGES[url.slice(1)]?.crumb||routeFiles[url].replace(/([a-z])([A-Z])/g,'$1 $2'))+'</a>').join('')+'</nav></details>');
+  if(header) header.querySelector('a[aria-label="The Collective home"]').insertAdjacentHTML('afterend','<details class="db-fallback-menu"><summary aria-label="Open navigation"><span class="db-fallback-desktop">Ecosystem ⌄</span><svg class="db-fallback-mobile" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></summary><nav aria-label="Site navigation">'+Object.keys(routeFiles).map(url=>'<a href="'+url+'">'+esc(url==='/'?'Home':url==='/business-ai'?'Automation':PAGES[url.slice(1)]?.crumb||routeFiles[url].replace(/([a-z])([A-Z])/g,'$1 $2'))+'</a>').join('')+'</nav></details>');
   // Open fallback FAQ answers; the enhanced page restores the existing accordion.
   for(const el of staticDoc.querySelectorAll('[style]')) {
     el.setAttribute('style',el.getAttribute('style').replace(/grid-template-rows:0fr/g,'grid-template-rows:1fr'));
@@ -228,5 +237,5 @@ write(path.join(root,'vercel.json'),JSON.stringify(config,null,2)+'\n');
 write(path.join(dist,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+allRoutes.map(route=>'  <url><loc>'+origin+route+'</loc></url>').join('\n')+'\n</urlset>\n');
 write(path.join(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: https://theimamcollective.com/sitemap.xml\n');
 // Optional human-readable content directory, not a ranking or citation signal.
-write(path.join(dist,'llms.txt'),'# The Indian Makers\n\n> '+org.description+'\n\nThis directory links to the same public content served to visitors. It is not a separate crawler copy. Service availability and pricing are described on the linked pages.\n\n## Company and services\n\n'+Object.keys(routeFiles).filter(route=>!['/jobs','/portfolio','/get-started','/insights'].includes(route)).map(route=>'- ['+titles[route].split(' | ')[0]+']('+origin+route+')').join('\n')+'\n\n## Practical guides\n\n'+ARTICLES.map(a=>'- ['+a.title+']('+origin+'/insights/'+a.slug+'): '+a.description).join('\n')+'\n\n## Contact\n\nUse the [contact page]('+origin+'/contact) for current public contact details.\n');
+write(path.join(dist,'llms.txt'),'# Innovation.Mastery.Automation.Marketing Collective\n\n> '+org.description+'\n\nThis directory links to the same public content served to visitors. It is not a separate crawler copy. Service availability and pricing are described on the linked pages.\n\n## Company and services\n\n'+Object.keys(routeFiles).filter(route=>!['/jobs','/portfolio','/get-started','/insights'].includes(route)).map(route=>'- ['+titles[route].split(' | ')[0]+']('+origin+route+')').join('\n')+'\n\n## Practical guides\n\n'+ARTICLES.map(a=>'- ['+a.title+']('+origin+'/insights/'+a.slug+'): '+a.description).join('\n')+'\n\n## Contact\n\nUse the [contact page]('+origin+'/contact) for current public contact details.\n');
 console.log('Built '+allRoutes.length+' crawlable pages with initial HTML, metadata and structured data.');

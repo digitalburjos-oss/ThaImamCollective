@@ -1,0 +1,43 @@
+:root{--brand-ember:#F36B21;--brand-green:#07543A;--brand-ink:#0B211C;--brand-ivory:#FAF8F0;--brand-muted:#64716B;accent-color:var(--brand-green)}
+html{scroll-behavior:smooth;scrollbar-color:#07543A #FAF8F0}
+::selection{background:#F36B21;color:#0B211C}
+:focus-visible{outline:3px solid #07543A!important;outline-offset:4px!important}
+.db-hero :focus-visible,.db-page-hero :focus-visible,.db-foot :focus-visible{outline-color:#ffb88d!important}
+input,textarea{caret-color:#07543A}
+.db-header-wordmark{width:200px;max-height:46px;object-fit:contain;object-position:left center}
+.db-foot-wordmark{display:block;width:min(340px,100%);height:auto;margin:0 0 18px;opacity:.97}
+.db-hero-title--glossy{background:none;-webkit-text-fill-color:#FAF8F0;color:#FAF8F0;filter:none;animation:db-hero-in 1.05s cubic-bezier(.14,.84,.22,1) both;font-size:clamp(2.6rem,.8rem + 5.4vw,6rem)}
+.db-hero-accent,.db-hero-title--glossy .db-hero-accent{background:none;-webkit-text-fill-color:#ff9757;color:#ff9757;animation:none}
+.db-foot{background:#07543A}
+.db-hero-shade{background:linear-gradient(90deg,rgba(11,33,28,.9),rgba(11,33,28,.65) 48%,rgba(7,84,58,.15)),linear-gradient(0deg,rgba(11,33,28,.8),transparent 35%)}
+.db-hero-stage::after{content:'Illustrative workflow previews';position:absolute;bottom:-30px;right:0;font:11px 'Instrument Sans',sans-serif;color:#FAF8F0;opacity:.7}
+@media(max-width:600px){.db-header-wordmark{width:150px}.db-nav-inner{padding-inline:12px!important}.db-hero-stage::after{bottom:-22px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Ink on brand saffron keeps small primary controls legible. */
+a[style*="background:linear-gradient(110deg"],a[style*="background:#F36B21"],button[style*="background:#F36B21"],.db-nav-cta,.db-foot-form button{color:#0B211C!important}
+
+/* ── Cinema layer ────────────────────────────────────────────────────────────
+   One shared film treatment for every hero: fine grain over the photography, a
+   warm bloom in the top corner and a soft vignette that pulls the eye to the
+   middle. Purely decorative, so nothing here affects content or layout. */
+.db-hero::before,.db-page-hero::before,.db-inner-hero::before{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;opacity:.075;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");background-size:120px 120px}
+.db-hero::after,.db-page-hero::after,.db-inner-hero::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(115% 80% at 82% 2%,rgba(255,140,80,.17),transparent 56%),radial-gradient(135% 105% at 50% 122%,rgba(5,11,9,.6),transparent 62%),radial-gradient(125% 95% at 50% 52%,transparent 48%,rgba(5,11,9,.52) 100%)}
+
+/* Hero entrance: a short focus pull rather than a flat rise. Redefining the
+   shared keyframes upgrades every page that already uses this animation. */
+@keyframes db-hero-in{0%{opacity:0;transform:translate3d(0,30px,0);filter:blur(12px)}70%{opacity:1}100%{opacity:1;transform:none}}
+.db-hero-content>*,.db-hero-grid>*>*,.db-hero-editorial>*>*,.db-article-hero-grid>*>*{animation-duration:1.05s;animation-timing-function:cubic-bezier(.14,.84,.22,1)}
+
+/* Hero scroll cinema: the backdrop drifts forward and the copy recedes while
+   the hero is on screen (transform only — the motion itself is scripted). */
+.db-hero hero-reel,.db-page-hero hero-reel,.db-inner-hero hero-reel{display:block;will-change:transform;transform-origin:50% 44%}
+.db-hero .db-hero-content,.db-page-hero .db-hero-content,.db-inner-hero .db-hero-content{will-change:transform,opacity}
+
+@media(prefers-reduced-motion:reduce){
+  .db-hero::before,.db-page-hero::before,.db-inner-hero::before{opacity:.05}
+  .db-hero hero-reel,.db-page-hero hero-reel,.db-inner-hero hero-reel{will-change:auto}
+  .db-hero .db-hero-content,.db-page-hero .db-hero-content,.db-inner-hero .db-hero-content{will-change:auto}
+}
+/* The older 380px rule pins the lockup to 96px, which is too small for a
+   two-line wordmark. Keep it legible on the narrowest screens. */
+@media(max-width:380px){.db-site-header .db-header-wordmark{width:132px}}

@@ -1,4 +1,4 @@
-/* The Indian Makers — single hero system. Every page hero uses the same section, shade, content box,
+/* The Collective — single hero system. Every page hero uses the same section, shade, content box,
    crumb, eyebrow, title, lead, actions and two-column grid. */
 html{font-family:'Instrument Sans',system-ui,sans-serif}
 .db-header-wordmark{display:block;width:150px;height:auto;object-fit:contain}
@@ -173,7 +173,7 @@ html,body{overflow-x:clip}
 @media(max-width:380px){
  .db-site-header .db-nav-inner{padding-left:8px!important;padding-right:8px!important}
  .db-site-header .db-header-wordmark{width:96px}
- .db-site-header a[aria-label="The Indian Makers home"]{margin-right:0!important}
+ .db-site-header a[aria-label="The Collective home"]{margin-right:0!important}
  .db-site-header .db-nav-cta{padding:0 8px!important;font-size:12px!important}
  .db-site-header button[aria-label^="Search"]{padding:0 6px!important}
 }

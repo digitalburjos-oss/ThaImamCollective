@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="hero-system.css?v=7">
-<link rel="stylesheet" href="/indian-makers.css">
+<link rel="stylesheet" href="/brand.css?v=2">
 </head>
 <body>
 <x-dc>
@@ -23,6 +23,7 @@
   <div class="db-foot-inner" style="max-width:76rem;margin:0 auto">
     <div class="db-foot-top">
       <div class="db-foot-brand">
+        <img src="brand/wordmark-white.svg" alt="Innovation.Mastery.Automation.Marketing Collective" class="db-foot-wordmark" width="360" height="77"/>
         <p class="db-foot-tag">Build more. <span>Spend less.</span></p>
         <p class="db-foot-copy">The technology stack of a larger enterprise — without the enterprise complexity or price.</p>
         <form class="db-foot-form" onsubmit="{{ subscribe }}" novalidate>
@@ -46,12 +47,12 @@
       </div>
     </div>
     <div class="db-foot-bar">
-      <p>© 2026 The Indian Makers. All rights reserved.</p>
+      <p>© 2026 Innovation.Mastery.Automation.Marketing Collective. All rights reserved.</p>
       <div class="db-foot-links"><a href="sitemap.xml">Sitemap</a><a href="/contact">Contact</a><button type="button" onclick="{{ toTop }}" class="db-foot-top-btn" aria-label="Back to top">Back to top <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
     </div>
   </div>
 </footer>
-<a href="https://wa.me/918547911745" target="_blank" rel="noopener" aria-label="Chat with The Indian Makers on WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:55;width:54px;height:54px;border-radius:16px;background:#07543A;color:#FAF8F0;display:grid;place-items:center;box-shadow:0 12px 28px -10px #0B211C;"> <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H7l-4 2 1.5-5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 9h8M8 13h5"/></svg></a>
+<a href="https://wa.me/918547911745" target="_blank" rel="noopener" aria-label="Chat with The Collective on WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:55;width:54px;height:54px;border-radius:16px;background:#07543A;color:#FAF8F0;display:grid;place-items:center;box-shadow:0 12px 28px -10px #0B211C;"> <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H7l-4 2 1.5-5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 9h8M8 13h5"/></svg></a>
 
 
 </x-dc>
@@ -59,7 +60,7 @@
 class Component extends DCLogic {
   state = { email: "", hp: "", status: "idle", msg: "" };
   cols = [
-    { h: "Platform", links: [["Business OS", "/business-os"], ["Indian Makers Automation", "/business-ai"], ["Growth", "/growth"], ["Studio", "/studio"], ["Industry Solutions", "/industries"]] },
+    { h: "Platform", links: [["Business OS", "/business-os"], ["Automation", "/business-ai"], ["Growth", "/growth"], ["Studio", "/studio"], ["Industry Solutions", "/industries"]] },
     { h: "People", links: [["Academy", "/academy"], ["Verified Talent", "/talent"], ["Jobs", "/jobs"], ["Insights", "/insights"]] },
     { h: "Company", links: [["About", "/company"], ["Pricing", "/pricing"], ["Portfolio", "/portfolio"], ["Contact", "/contact"], ["Get Started", "/get-started"]] },
   ].map((c) => ({ h: c.h, links: c.links.map(([label, href]) => ({ label, href })) }));

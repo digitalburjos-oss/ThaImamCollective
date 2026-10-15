@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="hero-system.css?v=7">
-<link rel="stylesheet" href="/indian-makers.css">
+<link rel="stylesheet" href="/brand.css?v=2">
 </head>
 <body>
 <x-dc>
@@ -35,7 +35,7 @@
         </div>
       </div>
       <aside class="db-hero-panel" aria-label="{{ p.hero.eyebrow }} overview">
-        <div class="db-panel-head"><img class="db-panel-icon" src="{{ p.panelIcon }}" alt=""/><div><span class="db-panel-label">The Indian Makers · {{ p.panelCategory }}</span><strong class="db-panel-title">{{ p.hero.eyebrow }}</strong></div></div>
+        <div class="db-panel-head"><img class="db-panel-icon" src="{{ p.panelIcon }}" alt=""/><div><span class="db-panel-label">The Collective · {{ p.panelCategory }}</span><strong class="db-panel-title">{{ p.hero.eyebrow }}</strong></div></div>
         <sc-if value="{{ p.isOrbit }}"><div class="db-panel-orbit"><span></span><img src="{{ p.panelIcon }}" alt=""/></div><p class="db-panel-note">Signals connected across your work</p></sc-if>
         <sc-if value="{{ p.isBars }}"><p class="db-panel-note">Performance at a glance</p><div class="db-panel-bars"><span style="--h:43%;--delay:.1s"></span><span style="--h:66%;--delay:.2s"></span><span style="--h:51%;--delay:.3s"></span><span style="--h:82%;--delay:.4s"></span><span style="--h:74%;--delay:.5s"></span><span style="--h:100%;--delay:.6s"></span></div></sc-if>
         <sc-if value="{{ p.isProgress }}"><p class="db-panel-note">From first conversation to outcome</p><div class="db-panel-ring"></div></sc-if>

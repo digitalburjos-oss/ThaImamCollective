@@ -133,7 +133,7 @@ export const ARTICLES = [
     takeaways: ["Employers trust work, not attendance.", "Fixing broken code teaches more than writing new code.", "Explaining your choices is part of the assessment."],
     sections: [
       { h: "The problem with certificates", p: ["A certificate proves someone attended. It doesn't show what they can build, debug or explain. Employers know this, which is why interviews still start from zero."] },
-      { h: "Build, break, fix, explain", p: ["In The Indian Makers Academy, learners build a real project. We then introduce faults on purpose. Learners find and fix them, and finally walk a reviewer through what went wrong and why their fix works."] },
+      { h: "Build, break, fix, explain", p: ["In The Collective Academy, learners build a real project. We then introduce faults on purpose. Learners find and fix them, and finally walk a reviewer through what went wrong and why their fix works."] },
       { h: "What learners leave with", p: ["A portfolio of working projects, a record of review, and — once Verified Talent opens — a profile entry that links each skill to the evidence behind it."] },
     ],
   },
@@ -146,7 +146,7 @@ export const ARTICLES = [
     takeaways: ["Self-reported, assessed and reviewed are different things.", "Labels should say exactly what was checked.", "Evidence beats adjectives."],
     sections: [
       { h: "Three levels of confidence", p: ["Self-reported: the person says they can do it. Assessed: they passed a set task under set conditions. Reviewed: someone independent examined their real work and agreed."] },
-      { h: "Why labels matter", p: ["A vague 'verified' badge helps nobody. Each skill on a The Indian Makers profile will state exactly which of these happened, when, and what evidence is attached."] },
+      { h: "Why labels matter", p: ["A vague 'verified' badge helps nobody. Each skill on a Collective profile will state exactly which of these happened, when, and what evidence is attached."] },
       { h: "What employers should do", p: ["Look at the evidence, not the label alone. Ask candidates to talk through a project on their profile — it's a better interview than any brain-teaser."] },
     ],
   },

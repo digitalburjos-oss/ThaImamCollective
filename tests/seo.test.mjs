@@ -22,7 +22,7 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     assert(!seenTitles.has(document.title),route+' unique title'); seenTitles.add(document.title);
     assert.equal(head.querySelector('link[rel=canonical]').getAttribute('href'),origin+route);
     assert.equal(head.querySelector('meta[property="og:url"]').getAttribute('content'),origin+route);
-    assert.equal(head.querySelector('meta[property="og:site_name"]').getAttribute('content'),'The Indian Makers');
+    assert.equal(head.querySelector('meta[property="og:site_name"]').getAttribute('content'),'Innovation.Mastery.Automation.Marketing Collective');
     assert(head.querySelector('meta[name=description]').getAttribute('content').length>60,route);
     assert(!/noindex/.test(head.querySelector('meta[name=robots]').getAttribute('content')));
     assert.deepEqual([...head.querySelectorAll('link[rel=icon]')].map(l=>l.getAttribute('href')),['/favicon.svg','/brand/favicon.png','/brand/favicon-192.png']);
@@ -42,14 +42,14 @@ test('every canonical URL has crawlable content and consistent brand signals wit
     const fallbackSummary=snapshot.querySelector('.db-fallback-menu summary');
     assert.equal(fallbackSummary.textContent,'Ecosystem ⌄');
     assert(fallbackSummary.querySelector('svg'));
-    assert.equal(snapshot.querySelector('.db-fallback-menu').previousElementSibling.getAttribute('aria-label'),'The Indian Makers home');
+    assert.equal(snapshot.querySelector('.db-fallback-menu').previousElementSibling.getAttribute('aria-label'),'The Collective home');
     for(const link of snapshot.querySelectorAll('a[href^="/"]')) {
       const url=new URL(link.getAttribute('href'),origin);
       assert(routes[url.pathname] || fs.existsSync(path.join(dist,url.pathname)),route+' broken internal link '+url.pathname);
       if(url.hash && url.pathname===route) assert(snapshot.querySelector('[id="'+decodeURIComponent(url.hash.slice(1))+'"]'),route+' missing anchor '+url.hash);
     }
-    const data=JSON.parse(head.querySelector('#indianmakers-schema').textContent);
-    assert(data['@graph'].some(x=>x['@type']==='WebSite'&&x.name==='The Indian Makers'));
+    const data=JSON.parse(head.querySelector('#brand-schema').textContent);
+    assert(data['@graph'].some(x=>x['@type']==='WebSite'&&x.name==='Innovation.Mastery.Automation.Marketing Collective'));
     assert(data['@graph'].some(x=>x['@type']==='Organization'&&x.url===origin+'/'));
     if(route.startsWith('/insights/')){
       const article=articles.ARTICLES.find(x=>'/insights/'+x.slug===route);
@@ -62,13 +62,13 @@ test('every canonical URL has crawlable content and consistent brand signals wit
   assert.equal(Object.keys(routes).length,31);
   const png=fs.readFileSync(path.join(dist,'brand/favicon.png'));
   assert.equal(png.readUInt32BE(16),96); assert.equal(png.readUInt32BE(20),96);
-  for(const route of ['/business-ai','/growth','/studio']) assert(read(routes[route]).includes('type="application/ld+json"') && read(routes[route]).includes('The Indian Makers'));
+  for(const route of ['/business-ai','/growth','/studio']) assert(read(routes[route]).includes('type="application/ld+json"') && read(routes[route]).includes('The Collective'));
 });
 
 test('answer and AI discovery data matches visible content and canonical destinations',()=> {
   for(const [route,file] of Object.entries(routes)) {
     const {document}=parseHTML(read(file));
-    const graph=JSON.parse(document.querySelector('#indianmakers-schema').textContent)['@graph'];
+    const graph=JSON.parse(document.querySelector('#brand-schema').textContent)['@graph'];
     const page=graph.find(n=>n['@id']===origin+route+'#webpage');
     const faq=(pages.PAGES[route.slice(1)]?.sections || []).filter(s=>s.type==='faq').flatMap(s=>s.items);
     const visible=document.querySelector('#seo-prerender').textContent.replace(/\s+/g,' ').trim();
@@ -91,19 +91,19 @@ test('answer and AI discovery data matches visible content and canonical destina
     }
   }
   const {document}=parseHTML(read(routes['/insights']));
-  const graph=JSON.parse(document.querySelector('#indianmakers-schema').textContent)['@graph'];
+  const graph=JSON.parse(document.querySelector('#brand-schema').textContent)['@graph'];
   const list=graph.find(n=>n['@type']==='ItemList');
   assert.equal(list.numberOfItems,articles.ARTICLES.length);
   for(const item of list.itemListElement) assert(routes[new URL(item.url).pathname]);
   const directory=read('llms.txt');
-  for(const match of directory.matchAll(/\]\((https:\/\/indianmakers\.com[^)]+)\)/g)) assert(routes[new URL(match[1]).pathname]);
+  for(const match of directory.matchAll(/\]\((https:\/\/theimamcollective\.com[^)]+)\)/g)) assert(routes[new URL(match[1]).pathname]);
   for(const a of articles.ARTICLES) assert(directory.includes(origin+'/insights/'+a.slug));
   assert(read('robots.txt').includes('Disallow: /api/'));
 });
 
 test('commercial pages explain their actual service search intent in search snippets',()=> {
   const expected = {
-    '/': ['Automation & Marketing','business software'],
+    '/': ['Innovation.Mastery.Automation.Marketing Collective','business software'],
     '/business-os': ['Business Management Software for growing businesses','CRM'],
     '/business-ai': ['AI Automation for Growing Businesses','AI agents'],
     '/studio': ['Web & App Development Services','websites'],
@@ -121,10 +121,10 @@ test('commercial pages explain their actual service search intent in search snip
 test('both brand spellings are visible and share one canonical company identity',()=>{
   for(const route of ['/','/company']) {
     const {document}=parseHTML(read(routes[route]));
-    assert.match(document.querySelector('#seo-prerender').textContent,/The Indian Makers/,route+' visible alternate brand spelling');
-    assert.match(document.querySelector('meta[name="description"]').getAttribute('content'),/Indian Makers/,route+' brand description');
-    const graph=JSON.parse(document.querySelector('#indianmakers-schema').textContent)['@graph'];
-    assert.equal(graph.find(n=>n['@type']==='Organization').alternateName,'Indian Makers');
+    assert.match(document.querySelector('#seo-prerender').textContent,/The Collective/,route+' visible alternate brand spelling');
+    assert.match(document.querySelector('meta[name="description"]').getAttribute('content'),/Collective/,route+' brand description');
+    const graph=JSON.parse(document.querySelector('#brand-schema').textContent)['@graph'];
+    assert.equal(graph.find(n=>n['@type']==='Organization').alternateName,'Collective');
     assert.equal(document.querySelector('link[rel="canonical"]').getAttribute('href'),origin+route);
   }
 });

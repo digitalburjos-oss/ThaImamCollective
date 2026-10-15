@@ -1,4 +1,4 @@
-// Shared helpers for the The Indian Makers serverless endpoints (no dependencies).
+// Shared helpers for the Collective serverless endpoints (no dependencies).
 const hits = new Map();
 
 function esc(s) {

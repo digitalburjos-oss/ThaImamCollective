@@ -20,6 +20,6 @@ module.exports = async (req, res) => {
   ]);
   const okSaved = saved.ok || /already|exist/i.test(JSON.stringify(saved.json));
   if (!okSaved && !notified.ok) return res.status(502).json({ error: "Could not send" });
-  resend("/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Indian Makers", html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A The Indian Makers specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The The Indian Makers team</p></div>` }).catch(() => {});
+  resend("/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Collective", html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A Collective specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The Collective team</p></div>` }).catch(() => {});
   return res.status(200).json({ ok: true });
 };

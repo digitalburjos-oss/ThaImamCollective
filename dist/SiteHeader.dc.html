@@ -15,14 +15,14 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="hero-system.css?v=7">
-<link rel="stylesheet" href="/indian-makers.css">
+<link rel="stylesheet" href="/brand.css?v=2">
 </head>
 <body>
 <x-dc>
 <header class="db-site-header" style="position:sticky;top:0;z-index:60;padding:10px 12px 0;font-family:'Instrument Sans',system-ui,sans-serif">
   <div class="db-nav-inner" style="max-width:76rem;margin:0 auto;height:62px;display:flex;align-items:center;gap:8px;padding:0 18px;border-radius:18px;background:rgba(250,248,240,.82);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(11,33,28,.08);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -28px rgba(11,33,28,.45)">
     <button onclick="{{ toggleSheet }}" aria-label="Open menu" aria-expanded="{{ sheetOpen }}" style="{{ burgerStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B211C" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-    <a href="/" aria-label="The Indian Makers home" style="display:flex;align-items:center;flex-shrink:0;margin-right:12px"><img src="brand/wordmark-480.webp" alt="The Indian Makers" class="db-header-wordmark"/></a>
+    <a href="/" aria-label="The Collective home" style="display:flex;align-items:center;flex-shrink:0;margin-right:12px"><img src="brand/wordmark.svg" alt="Innovation.Mastery.Automation.Marketing Collective" class="db-header-wordmark"/></a>
     <nav aria-label="Primary" style="{{ navStyle }}">
       <div onmouseenter="{{ openMega }}" onmouseleave="{{ closeMega }}" style="position:relative">
         <button onclick="{{ toggleMega }}" aria-expanded="{{ megaOpen }}" style="height:40px;padding:0 14px;border:none;background:transparent;border-radius:10px;font:500 14px 'Instrument Sans',sans-serif;color:#0B211C;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:rgba(11,33,28,.05)">Ecosystem<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="{{ chevStyle }}"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -64,7 +64,7 @@
 <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
   <div onclick="{{ toggleSheet }}" style="position:fixed;inset:0;z-index:90;background:rgba(11,33,28,.55);backdrop-filter:blur(4px);font-family:'Instrument Sans',sans-serif">
     <div onclick="{{ stop }}" style="position:absolute;top:10px;left:10px;bottom:10px;width:min(22rem,calc(100% - 20px));border-radius:16px;background:#FAF8F0;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px 10px"><img src="brand/wordmark-480.webp" alt="The Indian Makers" class="db-header-wordmark"/><button onclick="{{ toggleSheet }}" aria-label="Close menu" style="width:36px;height:36px;border-radius:10px;border:1px solid rgba(11,33,28,.1);background:#fff;cursor:pointer">✕</button></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px 10px"><img src="brand/wordmark.svg" alt="Innovation.Mastery.Automation.Marketing Collective" class="db-header-wordmark"/><button onclick="{{ toggleSheet }}" aria-label="Close menu" style="width:36px;height:36px;border-radius:10px;border:1px solid rgba(11,33,28,.1);background:#fff;cursor:pointer">✕</button></div>
       <div style="flex:1;overflow:auto;padding:8px 12px">
         <p style="margin:10px 6px 8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a918c">Ecosystem</p>
         <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="5">
@@ -108,7 +108,7 @@ class Component extends DCLogic {
   searchRef = React.createRef();
   divisions = [
     { name: "Business OS", line: "CRM, finance, HR, payroll and operations in one core.", href: "/business-os", icon: "brand/mark-business-os.webp" },
-    { name: "Indian Makers Automation", line: "AI employees that act through controlled tools.", href: "/business-ai", icon: "brand/mark-business-ai.webp" },
+    { name: "Automation", line: "AI employees that act through controlled tools.", href: "/business-ai", icon: "brand/mark-business-ai.webp" },
     { name: "Growth", line: "Websites, SEO, AEO, AI search, social and ads.", href: "/growth", icon: "brand/mark-growth.webp" },
     { name: "Studio", line: "Web apps, mobile apps, custom ERP and integrations.", href: "/studio", icon: "brand/mark-studio.webp" },
     { name: "Industry Solutions", line: "Vertical modules for 15 sectors on one core.", href: "/industries", icon: "brand/mark-industries.webp" },

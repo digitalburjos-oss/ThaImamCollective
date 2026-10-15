@@ -1,11 +1,11 @@
-// The Indian Makers production Worker.
+// The Collective production Worker.
 // Serves the static site from a KV mirror of a pinned git commit (self-healing: a missing file is fetched
 // once from the public GitHub repo, stored in KV, then served from KV + the edge cache), routes clean URLs,
 // and implements /api/contact, /api/subscribe and /api/lead (Resend).
 
 import { SEO_ROUTES } from "./seo-routes.js";
 
-const REPO = "shamhar07-max/The Indian MakersFinalMain";
+const REPO = "digitalburjos-oss/ThaImamCollective";
 const GENERATED_REDIRECTS = Object.fromEntries(Object.entries(SEO_ROUTES).map(([route, file]) => [file, route]));
 
 const PAGES = {
@@ -103,15 +103,15 @@ async function contact(request, env, ctx) {
   const d = { topic: clean(b.topic, 80), name: clean(b.name, 120), email: clean(b.email, 200), company: clean(b.company, 160), phone: clean(b.phone, 40), timeline: clean(b.timeline, 80), message: clean(b.message, 2000), source: clean(b.source, 120) };
   if (d.name.length < 2 || !EMAIL.test(d.email) || d.message.length < 20) return json({ error: "Please complete the required fields." }, 400);
   const to = env.CONTACT_TO || "contact@theimamcollective.com";
-  const from = env.MAIL_FROM || "The Indian Makers <info@theimamcollective.com>";
+  const from = env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
   const rows = [["Topic", d.topic], ["Name", d.name], ["Email", d.email], ["Company", d.company], ["Phone", d.phone], ["Timeline", d.timeline], ["Source", d.source]]
     .filter(([, v]) => v).map(([k, v]) => `<tr><td style="padding:6px 14px 6px 0;color:#6b746f">${esc(k)}</td><td style="padding:6px 0"><b>${esc(v)}</b></td></tr>`).join("");
   const html = `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:560px"><h2 style="margin:0 0 12px">New website enquiry</h2><table style="font-size:14px">${rows}</table><p style="margin:16px 0 4px;color:#6b746f;font-size:13px">Message</p><div style="white-space:pre-wrap;font-size:15px;line-height:1.55;border-left:3px solid #F36B21;padding-left:12px">${esc(d.message)}</div></div>`;
   const n = await resend(env, "/emails", { from, to: [to], reply_to: d.email, subject: `Enquiry: ${d.topic || "General"} — ${d.name}`, html });
   if (!n.ok) { console.error("resend notify failed", n.status, JSON.stringify(n.json).slice(0, 300)); return json({ error: "Could not send message" }, 502); }
   ctx.waitUntil(resend(env, "/emails", {
-    from, to: [d.email], reply_to: to, subject: "We received your message — The Indian Makers",
-    html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Hi ${esc(d.name.split(" ")[0])},</p><p>Thanks for contacting The Indian Makers. A specialist will reply within one business day.</p><p style="color:#6b746f;font-size:13px">Your message:<br>${esc(d.message).replace(/\n/g, "<br>")}</p><p>— The The Indian Makers team</p></div>`,
+    from, to: [d.email], reply_to: to, subject: "We received your message — The Collective",
+    html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Hi ${esc(d.name.split(" ")[0])},</p><p>Thanks for contacting The Collective. A specialist will reply within one business day.</p><p style="color:#6b746f;font-size:13px">Your message:<br>${esc(d.message).replace(/\n/g, "<br>")}</p><p>— The Collective team</p></div>`,
   }).catch(() => {}));
   return json({ ok: true });
 }
@@ -124,7 +124,7 @@ async function lead(request, env, ctx) {
   const email = clean(b.email, 200).toLowerCase(), source = clean(b.source, 120);
   if (!EMAIL.test(email)) return json({ error: "Please enter a valid email." }, 400);
   const to = env.CONTACT_TO || "contact@theimamcollective.com";
-  const from = env.MAIL_FROM || "The Indian Makers <info@theimamcollective.com>";
+  const from = env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
   const payload = { email, unsubscribed: false };
   if (env.RESEND_SEGMENT_ID) payload.segments = [{ id: env.RESEND_SEGMENT_ID }];
   const [saved, notified] = await Promise.all([
@@ -133,7 +133,7 @@ async function lead(request, env, ctx) {
   ]);
   const okSaved = saved.ok || /already|exist/i.test(JSON.stringify(saved.json));
   if (!okSaved && !notified.ok) { console.error("lead failed", saved.status, notified.status); return json({ error: "Could not send" }, 502); }
-  ctx.waitUntil(resend(env, "/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Indian Makers", html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A The Indian Makers specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The The Indian Makers team</p></div>` }).catch(() => {}));
+  ctx.waitUntil(resend(env, "/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Collective", html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A Collective specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The Collective team</p></div>` }).catch(() => {}));
   return json({ ok: true });
 }
 

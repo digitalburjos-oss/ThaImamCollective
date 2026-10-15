@@ -1,31 +1,66 @@
-/* The Indian Makers motion layer: scroll reveal, counters, parallax, spotlight, progress bar. */
+/* Innovation.Mastery.Automation.Marketing Collective motion layer:
+   scroll reveal, counters, parallax, pointer spotlight, hero scroll cinema and
+   the reading-progress bar. Everything here is progressive enhancement — with
+   JavaScript off, or with reduced motion requested, the page is complete and
+   still. */
 (function () {
   if (window.__dbMotion) return;
   window.__dbMotion = true;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var EASE = 'cubic-bezier(.22,.8,.24,1)';
+  var EASE = 'cubic-bezier(.14,.84,.22,1)';
   document.documentElement.style.scrollBehavior = 'smooth';
 
   function ready(fn) { document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
 
   ready(function () {
-    // progress bar
+    // Reading progress: a hairline of ember that keeps its own light.
     var bar = document.createElement('div');
     bar.setAttribute('aria-hidden', 'true');
-    bar.style.cssText = 'position:fixed;left:0;top:0;height:2px;width:100%;z-index:100;background:linear-gradient(90deg,#F36B21,#ff9757);transform-origin:0 50%;transform:scaleX(0);pointer-events:none';
+    bar.style.cssText = 'position:fixed;left:0;top:0;height:2px;width:100%;z-index:100;border-radius:0 2px 2px 0;background:linear-gradient(90deg,#F36B21,#ff9757 70%,#ffd0b3);box-shadow:0 0 14px rgba(243,107,33,.6);transform-origin:0 50%;transform:scaleX(0);pointer-events:none';
     document.body.appendChild(bar);
 
     var parallax = [];
+    var heroes = [];
+
+    // The hero reel is rendered by the page runtime, so re-collect on mutation.
+    function collect() {
+      heroes = [].slice.call(document.querySelectorAll('.db-hero,.db-page-hero,.db-inner-hero'));
+      for (var i = 0; i < heroes.length; i++) { heroes[i]._reel = null; heroes[i]._copy = null; }
+    }
+    function part(hero, key, sel) {
+      var el = hero[key];
+      if (!el || !el.isConnected) { try { el = hero[key] = hero.querySelector(sel); } catch (e) { el = hero[key] = null; } }
+      return el;
+    }
+
     function onScroll() {
-      var h = document.documentElement.scrollHeight - innerHeight;
-      bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+      var vh = innerHeight;
+      var max = document.documentElement.scrollHeight - vh;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0) + ')';
       if (reduce) return;
-      for (var i = 0; i < parallax.length; i++) {
-        var el = parallax[i], r = el.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > innerHeight + 200) continue;
+
+      var i, el, r;
+      for (i = 0; i < parallax.length; i++) {
+        el = parallax[i]; r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) continue;
         var f = parseFloat(el.getAttribute('data-parallax')) || 0.15;
-        var c = r.top + r.height / 2 - innerHeight / 2;
+        var c = r.top + r.height / 2 - vh / 2;
         el.style.transform = 'translate3d(0,' + (-c * f).toFixed(1) + 'px,0) scale(1.12)';
+      }
+
+      // Hero scroll cinema: while the hero is on screen the backdrop pushes in
+      // and the copy lifts away, so the page reads as one continuous take.
+      for (i = 0; i < heroes.length; i++) {
+        var hero = heroes[i], hr = hero.getBoundingClientRect();
+        if (hr.bottom < -80 || hr.top > vh + 80) continue;
+        var p = Math.min(1, Math.max(0, -hr.top / Math.max(1, hr.height)));
+        var reel = part(hero, '_reel', 'hero-reel,x-import[component-from-global-scope="hero-reel"]');
+        if (reel) reel.style.transform = 'translate3d(0,' + (p * 22).toFixed(1) + 'px,0) scale(' + (1 + p * 0.16).toFixed(4) + ')';
+        var copy = part(hero, '_copy', '.db-hero-content');
+        if (copy) {
+          copy.style.transform = 'translate3d(0,' + (-p * 52).toFixed(1) + 'px,0)';
+          copy.style.opacity = (1 - Math.min(1, p * 1.5)).toFixed(3);
+        }
       }
     }
     var ticking = false;
@@ -37,8 +72,12 @@
         var el = e.target; io.unobserve(el);
         if (el.hasAttribute('data-reveal')) {
           var d = parseInt(el.getAttribute('data-reveal-delay') || '0', 10);
-          el.style.transition = 'opacity .8s ' + EASE + ' ' + d + 'ms, transform .8s ' + EASE + ' ' + d + 'ms, filter .8s ' + EASE + ' ' + d + 'ms';
-          el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none';
+          el.style.transition = 'opacity .9s ' + EASE + ' ' + d + 'ms, transform .9s ' + EASE + ' ' + d + 'ms, filter .9s ' + EASE + ' ' + d + 'ms';
+          el.style.opacity = '1';
+          // Release the properties instead of forcing `none`, so elements that
+          // carry their own CSS transform (cards, tiles) keep it after reveal.
+          el.style.removeProperty('transform');
+          el.style.removeProperty('filter');
         }
         if (el.hasAttribute('data-count')) count(el);
       });
@@ -78,6 +117,7 @@
         }
         if (io) io.observe(el);
       });
+      collect();
       onScroll();
     }
     scan(document);

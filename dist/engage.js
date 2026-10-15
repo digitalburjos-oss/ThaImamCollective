@@ -1,4 +1,4 @@
-/* The Indian Makers engagement layer: toast notifications for form results + a "Free process review" offer
+/* The Collective engagement layer: toast notifications for form results + a "Free process review" offer
    (timed / scroll / exit-intent popup, remembered launcher chip). No third-party scripts. */
 (function () {
   if (window.__dbx) return; window.__dbx = 1;

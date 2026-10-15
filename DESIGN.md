@@ -1,6 +1,6 @@
-# Indian Makers visual system
+# Innovation.Mastery.Automation.Marketing Collective visual system
 
-The user pinned DigitalBurj's composition and interactions, with Indian Makers' supplied identity. Preserve the floating rounded header, full-height photographic hero, two-column preview panels, service ecosystem, editorial cards, horizontal industry rail, pricing grid and responsive navigation.
+The user pinned the reference site's composition and interactions, with the Collective's supplied identity. Preserve the floating rounded header, full-height photographic hero, two-column preview panels, service ecosystem, editorial cards, horizontal industry rail, pricing grid and responsive navigation.
 
 Brand tokens: saffron `#F36B21`, forest green `#07543A`, ink `#0B211C`, ivory `#FAF8F0`, muted `#64716B`. Display face: self-hosted Plus Jakarta Sans, 700–800. Body face: self-hosted Instrument Sans, 400–600. Main text is ink on ivory; hero text is ivory with a light saffron accent on dark green photographic overlays.
 
