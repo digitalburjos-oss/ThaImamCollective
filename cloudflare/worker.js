@@ -6,6 +6,7 @@
 import { SEO_ROUTES } from "./seo-routes.js";
 
 const REPO = "digitalburjos-oss/ThaImamCollective";
+const ROUTE_ALIASES = {"/business-os":"/services/os","/business-ai":"/services/ai","/studio":"/services/studio","/growth":"/services/growth","/academy":"/services/academy","/talent":"/services/talent","/solutions":"/services","/portfolio":"/work"};
 const GENERATED_REDIRECTS = Object.fromEntries(Object.entries(SEO_ROUTES).map(([route, file]) => [file, route]));
 
 const PAGES = {
@@ -103,15 +104,15 @@ async function contact(request, env, ctx) {
   const d = { topic: clean(b.topic, 80), name: clean(b.name, 120), email: clean(b.email, 200), company: clean(b.company, 160), phone: clean(b.phone, 40), timeline: clean(b.timeline, 80), message: clean(b.message, 2000), source: clean(b.source, 120) };
   if (d.name.length < 2 || !EMAIL.test(d.email) || d.message.length < 20) return json({ error: "Please complete the required fields." }, 400);
   const to = env.CONTACT_TO || "contact@theimamcollective.com";
-  const from = env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
+  const from = env.MAIL_FROM || "the collective <info@theimamcollective.com>";
   const rows = [["Topic", d.topic], ["Name", d.name], ["Email", d.email], ["Company", d.company], ["Phone", d.phone], ["Timeline", d.timeline], ["Source", d.source]]
     .filter(([, v]) => v).map(([k, v]) => `<tr><td style="padding:6px 14px 6px 0;color:#6b746f">${esc(k)}</td><td style="padding:6px 0"><b>${esc(v)}</b></td></tr>`).join("");
-  const html = `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:560px"><h2 style="margin:0 0 12px">New website enquiry</h2><table style="font-size:14px">${rows}</table><p style="margin:16px 0 4px;color:#6b746f;font-size:13px">Message</p><div style="white-space:pre-wrap;font-size:15px;line-height:1.55;border-left:3px solid #F36B21;padding-left:12px">${esc(d.message)}</div></div>`;
+  const html = `<div style="font-family:Arial,sans-serif;color:#28142D;max-width:560px"><h2 style="margin:0 0 12px">New website enquiry</h2><table style="font-size:14px">${rows}</table><p style="margin:16px 0 4px;color:#6b746f;font-size:13px">Message</p><div style="white-space:pre-wrap;font-size:15px;line-height:1.55;border-left:3px solid #EE4823;padding-left:12px">${esc(d.message)}</div></div>`;
   const n = await resend(env, "/emails", { from, to: [to], reply_to: d.email, subject: `Enquiry: ${d.topic || "General"} — ${d.name}`, html });
   if (!n.ok) { console.error("resend notify failed", n.status, JSON.stringify(n.json).slice(0, 300)); return json({ error: "Could not send message" }, 502); }
   ctx.waitUntil(resend(env, "/emails", {
     from, to: [d.email], reply_to: to, subject: "We received your message — The Collective",
-    html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Hi ${esc(d.name.split(" ")[0])},</p><p>Thanks for contacting The Collective. A specialist will reply within one business day.</p><p style="color:#6b746f;font-size:13px">Your message:<br>${esc(d.message).replace(/\n/g, "<br>")}</p><p>— The Collective team</p></div>`,
+    html: `<div style="font-family:Arial,sans-serif;color:#28142D;max-width:520px"><p>Hi ${esc(d.name.split(" ")[0])},</p><p>Thanks for contacting The Collective. A specialist will reply within one business day.</p><p style="color:#6b746f;font-size:13px">Your message:<br>${esc(d.message).replace(/\n/g, "<br>")}</p><p>— The Collective team</p></div>`,
   }).catch(() => {}));
   return json({ ok: true });
 }
@@ -124,16 +125,16 @@ async function lead(request, env, ctx) {
   const email = clean(b.email, 200).toLowerCase(), source = clean(b.source, 120);
   if (!EMAIL.test(email)) return json({ error: "Please enter a valid email." }, 400);
   const to = env.CONTACT_TO || "contact@theimamcollective.com";
-  const from = env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
+  const from = env.MAIL_FROM || "the collective <info@theimamcollective.com>";
   const payload = { email, unsubscribed: false };
   if (env.RESEND_SEGMENT_ID) payload.segments = [{ id: env.RESEND_SEGMENT_ID }];
   const [saved, notified] = await Promise.all([
     resend(env, "/contacts", payload),
-    resend(env, "/emails", { from, to: [to], reply_to: email, subject: `New process-review request — ${email}`, html: `<div style="font-family:Arial,sans-serif;color:#0B211C"><h3>Free process review requested</h3><p><b>${esc(email)}</b><br>From page: ${esc(source || "/")}</p></div>` }),
+    resend(env, "/emails", { from, to: [to], reply_to: email, subject: `New process-review request — ${email}`, html: `<div style="font-family:Arial,sans-serif;color:#28142D"><h3>Free process review requested</h3><p><b>${esc(email)}</b><br>From page: ${esc(source || "/")}</p></div>` }),
   ]);
   const okSaved = saved.ok || /already|exist/i.test(JSON.stringify(saved.json));
   if (!okSaved && !notified.ok) { console.error("lead failed", saved.status, notified.status); return json({ error: "Could not send" }, 502); }
-  ctx.waitUntil(resend(env, "/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Collective", html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A Collective specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The Collective team</p></div>` }).catch(() => {}));
+  ctx.waitUntil(resend(env, "/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Collective", html: `<div style="font-family:Arial,sans-serif;color:#28142D;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A Collective specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The Collective team</p></div>` }).catch(() => {}));
   return json({ ok: true });
 }
 
@@ -195,6 +196,7 @@ export default {
     if (url.protocol === "http:" && url.hostname === "theimamcollective.com") return Response.redirect(`https://theimamcollective.com${path}${url.search}`, 301);
 
     if (path.length > 1 && path.endsWith("/")) return Response.redirect(`${url.origin}${path.replace(/\/+$/, "")}${url.search}`, 301);
+    if (ROUTE_ALIASES[path]) return Response.redirect(`${url.origin}${ROUTE_ALIASES[path]}${url.search}`, 301);
     if (LEGACY[path]) return Response.redirect(`${url.origin}${LEGACY[path]}${url.search}`, 301);
     if (path === "/Article.dc.html") return Response.redirect(`${url.origin}/insights${url.searchParams.get("a") ? "/" + encodeURIComponent(url.searchParams.get("a")) : ""}`, 301);
     if (GENERATED_REDIRECTS[path]) return Response.redirect(`${url.origin}${GENERATED_REDIRECTS[path]}${url.search}`, 301);

@@ -3,6 +3,8 @@ name: SEO build and live verification
 on:
   pull_request:
     paths:
+      - 'src/**'
+      - 'public/**'
       - 'scripts/**'
       - 'tests/**'
       - 'dist/**'
@@ -37,8 +39,8 @@ jobs:
       - run: npm run build
       - name: Verify generated SEO release files are committed
         run: |
-          git diff --exit-code -- dist/seo-pages dist/seo-routes.json dist/sitemap.xml dist/robots.txt dist/llms.txt cloudflare/seo-routes.js cloudflare/worker-dashboard.mjs vercel.json
-          if [ -n "$(git ls-files --others --exclude-standard dist/seo-pages)" ]; then
+          git diff --exit-code -- dist cloudflare/seo-routes.js cloudflare/worker-dashboard.mjs vercel.json
+          if [ -n "$(git ls-files --others --exclude-standard dist)" ]; then
             echo 'Untracked SEO release files found; commit generated output before deploying.'
             exit 1
           fi

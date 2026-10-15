@@ -12,15 +12,15 @@ module.exports = async (req, res) => {
   const email = clean(b.email, 200).toLowerCase(), source = clean(b.source, 120);
   if (!EMAIL.test(email)) return res.status(400).json({ error: "Please enter a valid email." });
   const to = process.env.CONTACT_TO || "contact@theimamcollective.com";
-  const from = process.env.MAIL_FROM || "Innovation.Mastery.Automation.Marketing Collective <info@theimamcollective.com>";
+  const from = process.env.MAIL_FROM || "the collective <info@theimamcollective.com>";
   const payload = { email, unsubscribed: false };
   if (process.env.RESEND_SEGMENT_ID) payload.segments = [{ id: process.env.RESEND_SEGMENT_ID }];
   const [saved, notified] = await Promise.all([
     resend("/contacts", payload),
-    resend("/emails", { from, to: [to], reply_to: email, subject: `New process-review request — ${email}`, html: `<div style="font-family:Arial,sans-serif;color:#0B211C"><h3>Free process review requested</h3><p><b>${esc(email)}</b><br>From page: ${esc(source || "/")}</p></div>` }),
+    resend("/emails", { from, to: [to], reply_to: email, subject: `New process-review request — ${email}`, html: `<div style="font-family:Arial,sans-serif;color:#28142D"><h3>Free process review requested</h3><p><b>${esc(email)}</b><br>From page: ${esc(source || "/")}</p></div>` }),
   ]);
   const okSaved = saved.ok || /already|exist/i.test(JSON.stringify(saved.json));
   if (!okSaved && !notified.ok) return res.status(502).json({ error: "Could not send" });
-  resend("/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Collective", html: `<div style="font-family:Arial,sans-serif;color:#0B211C;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A Collective specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The Collective team</p></div>` }).catch(() => {});
+  resend("/emails", { from, to: [email], reply_to: to, subject: "Your free process review — The Collective", html: `<div style="font-family:Arial,sans-serif;color:#28142D;max-width:520px"><p>Thanks for requesting a free process review.</p><p>A Collective specialist will email you within one business day to pick a workflow to map. You can also reply to this email.</p><p>— The Collective team</p></div>` }).catch(() => {});
   return res.status(200).json({ ok: true });
 };

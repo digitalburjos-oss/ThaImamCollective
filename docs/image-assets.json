@@ -1,10 +1,13 @@
 {
-  "source": "User-supplied Collective Brand Kit",
-  "photography": "Three original AI-generated Collective studio, automation and marketing scenes",
-  "generated": [
-    "studio",
-    "automation",
-    "marketing"
+  "brand": "the collective",
+  "identitySource": "User-supplied The-Collective-Master-Brand-Assets.zip",
+  "imagery": [
+    {"file":"hero.webp","scene":"Operations designer reviewing workflow maps at a practical studio desk","type":"Original AI-generated illustrative photography"},
+    {"file":"operations.webp","scene":"Warehouse operator scanning a package","type":"Original AI-generated illustrative photography"},
+    {"file":"studio.webp","scene":"Designers arranging packaging proofs and digital tools","type":"Original AI-generated illustrative photography"},
+    {"file":"global.webp","scene":"Architectural evening view into a working studio","type":"Original AI-generated illustrative photography"}
   ],
-  "usage": "Responsive media, industry and editorial derivatives replace all reference photography."
+  "responsive": "1536px and 768px WebP exports",
+  "dashboards": "Interactive HTML with explicitly labelled sample data",
+  "projectPreviews": "Original HTML interface studies grounded in owner-supplied repository scope"
 }

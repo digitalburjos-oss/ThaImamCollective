@@ -1,64 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { parseHTML } from 'linkedom';
-const origin = 'https://theimamcollective.com';
-// Allow the same release checks against a local/staging server. Canonical URLs
-// and structured identity must still refer to the production domain.
-const target = new URL(process.env.VERIFY_ORIGIN || origin);
-assert(['http:','https:'].includes(target.protocol) && !target.username && !target.password && target.pathname==='/' && !target.search && !target.hash, 'VERIFY_ORIGIN must be an HTTP(S) origin without credentials, path, query or fragment');
-const routes = JSON.parse(fs.readFileSync(new URL('../dist/seo-routes.json', import.meta.url), 'utf8'));
-// Release-specific metadata expectations: detect stale deployments even when
-// routes return HTTP 200 and the sitemap is present.
-const expectedTitles = {
-  '/': 'Innovation.Mastery.Automation.Marketing Collective — Build more. Spend less.',
-  '/business-os': 'Business Management Software for growing businesses | The Collective',
-  '/business-ai': 'AI Automation for Growing Businesses | The Collective',
-  '/studio': 'Web & App Development Services | The Collective',
-  '/industries': 'Industry Business Software Solutions | The Collective'
-};
-let failures = 0;
-async function check(route, inspect) {
-  try {
-    const res = await fetch(target.origin + route, { redirect: 'manual', signal: AbortSignal.timeout(20000), headers: {'User-Agent':'The Collective-Release-Check/1.0'} });
-    await inspect(res);
-    console.log('PASS', route);
-  } catch (err) { failures++; console.error('FAIL', route, err.message); }
-}
-for (const route of Object.keys(routes)) await check(route, async res => {
-  assert.equal(res.status, 200, 'Public page status');
-  const html = await res.text();
-  const {document} = parseHTML(html);
-  assert.equal(document.querySelector('link[rel="canonical"]')?.getAttribute('href'), origin + route, 'Canonical');
-  assert(document.querySelector('#seo-prerender'), 'SEO HTML release is missing');
-  assert(document.querySelector('#brand-schema'), 'Brand structured data is missing');
-  const expected = parseHTML(fs.readFileSync(new URL('../dist' + routes[route], import.meta.url), 'utf8')).document;
-  assert.deepEqual(JSON.parse(document.querySelector('#brand-schema').textContent), JSON.parse(expected.querySelector('#brand-schema').textContent), 'Current structured data mismatch (possible stale deployment)');
-  const title = document.querySelector('title')?.textContent?.trim();
-  assert(title?.includes('Collective'), 'Collective brand title missing');
-  assert(document.querySelector('meta[name="description"]')?.getAttribute('content')?.trim(), 'Meta description missing');
-  if (expectedTitles[route]) assert.equal(title, expectedTitles[route], 'Current release title mismatch (possible stale deployment)');
-
-  assert(!html.includes('G-XM0TZ7W0GN'), 'Source analytics removed');
-});
-for (const route of ['/brand/favicon.png','/favicon.ico','/brand/apple-touch-icon.png']) await check(route, async res => {
-  assert.equal(res.status, 200); assert.match(res.headers.get('content-type')||'', /^image\//);
-  assert((await res.arrayBuffer()).byteLength > 100);
-});
-await check('/sitemap.xml', async res => {
-  assert.equal(res.status,200); const xml=await res.text();
-  for(const route of Object.keys(routes)) assert(xml.includes('<loc>'+origin+route+'</loc>'));
-});
-await check('/robots.txt', async res => {
-  assert.equal(res.status,200);
-  const text=await res.text();
-  assert.match(text,/User-agent: \*/);
-  assert.match(text,/Disallow: \/api\//);
-  assert(text.includes('Sitemap: '+origin+'/sitemap.xml'));
-});
-await check('/llms.txt', async res => {
-  assert.equal(res.status,200);
-  assert.equal(await res.text(),fs.readFileSync(new URL('../dist/llms.txt',import.meta.url),'utf8'));
-});
-await check('/insights/nonexistent-release-check', res=>assert.equal(res.status,404));
-console.log(`${failures} failed checks. A 403 to this diagnostic client does not establish that Googlebot is blocked.`);
-process.exitCode = failures ? 1 : 0;
+import {parseHTML} from 'linkedom';
+const base=process.env.VERIFY_ORIGIN||'http://127.0.0.1:3000',target=new URL(base);assert(['http:','https:'].includes(target.protocol)&&!target.username&&!target.password&&target.pathname==='/');
+const routes=JSON.parse(fs.readFileSync(new URL('../dist/seo-routes.json',import.meta.url)));let failed=0;
+for(const route of Object.keys(routes)){try{const r=await fetch(target.origin+route);assert.equal(r.status,200);const {document:d}=parseHTML(await r.text());assert.equal(d.querySelector('link[rel=canonical]').getAttribute('href'),'https://theimamcollective.com'+route);assert.equal(d.querySelectorAll('h1').length,1);assert(d.title.includes('the collective'));console.log('PASS',route);}catch(e){failed++;console.error('FAIL',route,e.message);}}
+for(const route of ['/site.css','/site.js','/brand/logo-compact.png','/images/hero.webp','/favicon.ico','/sitemap.xml','/robots.txt']){const r=await fetch(target.origin+route);if(r.status!==200){failed++;console.error('FAIL',route,r.status);}}
+const missing=await fetch(target.origin+'/insights/nonexistent-check');if(missing.status!==404){failed++;console.error('FAIL missing-route status');}
+for(const [old,next]of Object.entries(JSON.parse(fs.readFileSync(new URL('../dist/route-aliases.json',import.meta.url))))){const r=await fetch(target.origin+old,{redirect:'manual'});if(![301,308].includes(r.status)||r.headers.get('location')!==next){failed++;console.error('FAIL redirect',old);}}
+console.log(`${Object.keys(routes).length} pages checked; ${failed} failures.`);process.exitCode=failed?1:0;

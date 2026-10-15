@@ -1,13 +1,23 @@
 # Validation — 15 October 2026
 
-- `npm ci --cache /workspace/.npm-cache --no-audit --no-fund`: passed with lockfile integrity verification enabled. The initial default-cache attempt failed because `/home/agent/.npm` was not writable; using the workspace cache resolved it.
-- `npm run build`: passed; generated 31 crawlable pages, metadata, sitemap, route maps and Worker bundle.
-- `npm test`: 7 passed, 0 failed, 0 skipped. Covers canonical metadata, structured data and visible content, service-page intent, route handling, and interactive runtime enhancement, menu and search behavior.
-- `VERIFY_ORIGIN=http://127.0.0.1:3000 npm run verify:live`: all page, metadata, release-asset and missing-route checks passed.
-- Chromium: all 31 routes enhanced correctly at 1440px and 390px, with no page JavaScript errors and no horizontal viewport overflow.
-- Homepage images: no failed images after scrolling through the complete page at desktop and mobile widths.
-- Mobile menu: opens and closes. Contact form: missing name, invalid email and short message produce validation errors at both widths.
-- Identity audit: all 161 incumbent image files differ from their reference versions. No reference domain or old WhatsApp number remains in application text or configuration. Original analytics tag removed.
-- Local API: GET contact returns 405; contact, lead and newsletter POSTs return honest 503 responses without a provider key. Missing articles return 404. No real email was sent.
+## Build and route coverage
 
-Current limitations: automated email delivery needs `RESEND_API_KEY` and a verified sender domain on the deployment host. The contact form offers a mailto fallback. Mailbox provisioning, public deployment, GitHub push and domain connection have not been performed. The reference's indicative USD price tables require business confirmation before publication. Academy, Talent and Jobs are marketing pages, as in the reference, not authenticated platforms.
+- Frozen-lockfile dependency installation (`npm ci --cache /workspace/.npm-cache --no-audit --no-fund`) passed with integrity verification enabled.
+- `npm run build` passed and generated 37 complete static pages, canonical metadata, structured data, search index, sitemap, Vercel routes and the optional Worker bundle.
+- `npm test`: eight passed, zero failed or skipped. Tests cover global page content, unique metadata, internal resources and anchors, USD pricing and annual totals, legacy redirects, dashboard tabs, project filtering, article search, the service finder, menu state, form validation, explicit unsent email fallback, the human-review workflow and keyboard search dismissal.
+- `VERIFY_ORIGIN=http://127.0.0.1:3000 npm run verify:live`: all 37 pages, release assets, eight legacy route aliases and a real missing-page response passed.
+- Retired geographic positioning and currencies: zero matches in active source or generated page content. The user’s international phone contact remains a contact channel, without a regional positioning claim.
+
+## Browser checks
+
+Chromium loaded all 37 pages at 1440px and 390px widths: no horizontal viewport overflow, no missing main headings, no failed loaded images and no page JavaScript errors. Additional home checks passed at 320, 375, 768 and 1024px.
+
+The actual browser also verified keyboard search, populated-dialog Escape dismissal, dashboard arrow-key tabs, service recommendations, a workflow that stops at human approval, mobile-menu dismissal, reduced motion, contact validation, an explicit provider-failure draft option and a mocked successful submission that resets the form. The search Escape behavior was corrected and covered by a regression test.
+
+Screenshots include the homepage, OS capability, selected work, contact and demo pages at desktop and mobile widths. Original documentary-style imagery is AI-generated and illustrative. Project previews and dashboards use labelled sample data.
+
+## External services and scope
+
+No Resend API key is injected into this development machine. Real automated email delivery and mailbox/domain configuration are not verified here. Browser delivery scenarios were mocked and no real email or newsletter message was sent.
+
+The marketing website does not deploy or expose the referenced projects’ authenticated applications. The dashboard and workflow are local examples, not live customer accounts. USD platform estimates remain indicative; custom work, implementation, usage, taxes and commercial terms require confirmation. Public deployment is managed by the user’s hosting project.

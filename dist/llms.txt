@@ -1,42 +1,43 @@
-# Innovation.Mastery.Automation.Marketing Collective
+# the collective
 
-> Innovation.Mastery.Automation.Marketing Collective provides business software, AI automation, digital growth, custom software development, industry solutions, practical learning and verified talent.
+Intelligent Management & Automation Matrix
 
-This directory links to the same public content served to visitors. It is not a separate crawler copy. Service availability and pricing are described on the linked pages.
+Worldwide collaboration. Platform estimates in USD.
 
-## Company and services
-
-- [Innovation.Mastery.Automation.Marketing Collective — Build more. Spend less.](https://theimamcollective.com/)
-- [Business Management Software for growing businesses](https://theimamcollective.com/business-os)
-- [AI Automation for Growing Businesses](https://theimamcollective.com/business-ai)
-- [SEO, AI Search & Digital Growth Services](https://theimamcollective.com/growth)
-- [Web & App Development Services](https://theimamcollective.com/studio)
-- [Industry Business Software Solutions](https://theimamcollective.com/industries)
-- [The Collective Academy](https://theimamcollective.com/academy)
-- [Verified Talent & Evidence-Based Hiring](https://theimamcollective.com/talent)
-- [Business Software & Service Pricing](https://theimamcollective.com/pricing)
-- [About Innovation.Mastery.Automation.Marketing Collective](https://theimamcollective.com/company)
-- [Business Technology Solutions](https://theimamcollective.com/solutions)
-- [Contact The Collective](https://theimamcollective.com/contact)
-
-## Practical guides
-
-- [What is Business AI? A practical definition for operators](https://theimamcollective.com/insights/what-is-business-ai): Business AI is the practical use of AI and automation to make operations faster and more reliable — judged by response time, error rate and cost, not by novelty.
-- [When should a company automate a workflow? A decision guide](https://theimamcollective.com/insights/when-should-a-company-automate-a-workflow): Which workflows are ready for automation, which aren't, and a simple scoring method for deciding what to automate first.
-- [What is workflow automation? Triggers, conditions and actions explained](https://theimamcollective.com/insights/what-is-workflow-automation): Workflow automation moves work through defined steps automatically using triggers, conditions and actions. Here's how it works and where it fails.
-- [AI agent vs chatbot: what's the real difference?](https://theimamcollective.com/insights/ai-agent-vs-chatbot): A chatbot replies in conversation. An AI agent takes actions using tools. The difference changes how you design safeguards.
-- [CRM vs ERP: which system does your business actually need?](https://theimamcollective.com/insights/crm-vs-erp): CRM manages customer relationships and sales; ERP manages operations and finance. How to tell which problem you have — and when you need both.
-- [What makes software production-ready?](https://theimamcollective.com/insights/what-makes-software-production-ready): Production-ready software is correct, secure, observable, recoverable and maintainable. A checklist we use before any release.
-- [How to scope an MVP without building too much](https://theimamcollective.com/insights/how-to-scope-an-mvp): A step-by-step method to scope a minimum viable product: one core action, one user, and a written list of what you won't build.
-- [MVP vs prototype: what is the difference?](https://theimamcollective.com/insights/mvp-vs-prototype): A prototype explores an idea; an MVP puts it in front of real users doing real work. Choosing the wrong one wastes months.
-- [What is RBAC (role-based access control)?](https://theimamcollective.com/insights/what-is-rbac): Role-based access control grants permissions to roles rather than individual users — the foundation of secure internal software.
-- [What is evidence-based learning — and why certificates aren't enough](https://theimamcollective.com/insights/what-is-evidence-based-learning): Learners finish with proof of what they can do, not just a certificate of attendance. How our build–break–fix–explain loop works.
-- [What does 'verified professional capability' actually mean?](https://theimamcollective.com/insights/what-does-verified-professional-capability-mean): Verified capability means a skill is supported by evidence that has been independently checked. Here's how we label the difference.
-- [Skills-based hiring: a practical guide for employers](https://theimamcollective.com/insights/skills-based-hiring-guide): How to write role requirements as capabilities, assess them fairly, and shortlist faster — without relying on degree filters.
-- [Where to start with document automation in logistics](https://theimamcollective.com/insights/document-automation-in-logistics): A practical starting point for logistics companies automating bills of lading, invoices and delivery notes — without disrupting operations.
-- [Real estate lead response: why the first hour decides the deal](https://theimamcollective.com/insights/real-estate-lead-response-automation): Portal and WhatsApp leads cool fast. How brokerages capture, qualify and route every enquiry within minutes — with agents still in control.
-- [A responsible AI checklist for mid-sized companies](https://theimamcollective.com/insights/responsible-ai-checklist): Human oversight, data minimisation, logging and clear limits — the practical safeguards every AI deployment should have before launch.
-
-## Contact
-
-Use the [contact page](https://theimamcollective.com/contact) for current public contact details.
+- [Intelligent systems. Thoughtful design. Worldwide.](https://theimamcollective.com/)
+- [Connected capabilities](https://theimamcollective.com/services)
+- [Selected work](https://theimamcollective.com/work)
+- [Independent minds. Collective momentum.](https://theimamcollective.com/company)
+- [Connected work across industries](https://theimamcollective.com/industries)
+- [Considered investment. Pricing in USD.](https://theimamcollective.com/pricing)
+- [Let’s make something work better](https://theimamcollective.com/contact)
+- [What’s next? Start a project brief.](https://theimamcollective.com/get-started)
+- [Field notes, written to be used](https://theimamcollective.com/insights)
+- [Explore a connected workspace](https://theimamcollective.com/demo)
+- [People and collaboration](https://theimamcollective.com/jobs)
+- [Your information, clearly explained](https://theimamcollective.com/privacy)
+- [Collective OS — Run the business.](https://theimamcollective.com/services/os)
+- [Collective AI — Give repetitive work a way out.](https://theimamcollective.com/services/ai)
+- [Collective Studio — Make the next thing real.](https://theimamcollective.com/services/studio)
+- [Collective Growth — Make attention count.](https://theimamcollective.com/services/growth)
+- [Collective Academy — Build capability that stays.](https://theimamcollective.com/services/academy)
+- [Collective Talent — Bring the right people together.](https://theimamcollective.com/services/talent)
+- [Loadbyton OS — Operations platform](https://theimamcollective.com/work/loadbyton-os)
+- [Loadbyton — Digital marketplace](https://theimamcollective.com/work/loadbyton)
+- [DigitalBurj — Connected service ecosystem](https://theimamcollective.com/work/digitalburj)
+- [Elvora Shipping — Logistics experience](https://theimamcollective.com/work/elvora)
+- [What is Business AI? A practical definition for operators](https://theimamcollective.com/insights/what-is-business-ai)
+- [When should a company automate a workflow? A decision guide](https://theimamcollective.com/insights/when-should-a-company-automate-a-workflow)
+- [What is workflow automation? Triggers, conditions and actions explained](https://theimamcollective.com/insights/what-is-workflow-automation)
+- [AI agent vs chatbot: what's the real difference?](https://theimamcollective.com/insights/ai-agent-vs-chatbot)
+- [CRM vs ERP: which system does your business actually need?](https://theimamcollective.com/insights/crm-vs-erp)
+- [What makes software production-ready?](https://theimamcollective.com/insights/what-makes-software-production-ready)
+- [How to scope an MVP without building too much](https://theimamcollective.com/insights/how-to-scope-an-mvp)
+- [MVP vs prototype: what is the difference?](https://theimamcollective.com/insights/mvp-vs-prototype)
+- [What is RBAC (role-based access control)?](https://theimamcollective.com/insights/what-is-rbac)
+- [What is evidence-based learning — and why certificates aren't enough](https://theimamcollective.com/insights/what-is-evidence-based-learning)
+- [What does 'verified professional capability' actually mean?](https://theimamcollective.com/insights/what-does-verified-professional-capability-mean)
+- [Skills-based hiring: a practical guide for employers](https://theimamcollective.com/insights/skills-based-hiring-guide)
+- [Where to start with document automation in logistics](https://theimamcollective.com/insights/document-automation-in-logistics)
+- [Real estate lead response: why the first hour decides the deal](https://theimamcollective.com/insights/real-estate-lead-response-automation)
+- [A responsible AI checklist for mid-sized companies](https://theimamcollective.com/insights/responsible-ai-checklist)
