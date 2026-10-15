@@ -27,3 +27,13 @@ test('reference mobile sheet closes, restores scroll and traps tab within its op
  const controls=[...drawer.querySelectorAll('a[href],button:not([disabled])')];controls.at(-1).focus();controls.at(-1).dispatchEvent(new w.KeyboardEvent('keydown',{key:'Tab',bubbles:true,cancelable:true}));assert.equal(d.activeElement,controls[0]);
  d.querySelector('[data-mobile-close]').click();await Promise.resolve();assert(drawer.hidden);assert.equal(d.body.style.overflow,'');assert.equal(d.activeElement,menu);dom.window.close();
 });
+
+test('capability carousel supports next, previous, keyboard boundaries and reduced motion',()=>{
+ const dom=new JSDOM(read(routes['/']),{url:'https://theimamcollective.com/',runScripts:'outside-only'});const w=dom.window;w.matchMedia=()=>({matches:true,addEventListener(){}});
+ const d=w.document,track=d.querySelector('.horizontal-track');assert(track);track.style.gap='18px';
+ Object.defineProperties(track,{clientWidth:{value:1000},scrollWidth:{value:2010}});track.children[0].getBoundingClientRect=()=>({width:320});
+ let behavior;track.scrollTo=options=>{behavior=options.behavior;track.scrollLeft=Math.max(0,Math.min(1010,options.left));track.dispatchEvent(new w.Event('scroll'));};
+ w.eval(read('experience.js'));const previous=d.querySelector('[data-carousel-prev]'),next=d.querySelector('[data-carousel-next]');assert(previous.disabled);next.click();assert.equal(track.scrollLeft,338);assert.equal(behavior,'instant');previous.click();assert.equal(track.scrollLeft,0);
+ track.dispatchEvent(new w.KeyboardEvent('keydown',{key:'End',bubbles:true,cancelable:true}));assert.equal(track.scrollLeft,1010);assert(next.disabled);assert.equal(d.querySelector('[data-carousel-position]').textContent,'4–6 / 6');
+ track.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true,cancelable:true}));assert.equal(track.scrollLeft,0);assert(previous.disabled);assert(d.querySelector('[data-carousel-status]').textContent.includes('Collective'));dom.window.close();
+});

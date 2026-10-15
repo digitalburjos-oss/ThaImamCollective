@@ -1,0 +1,35 @@
+/* The supplied identity is the typography colour authority on every route. */
+:root{--text-primary:#28142d;--text-secondary:#736774;--text-accent:#ee4823;--text-inverse:#fbf8f0}
+body{color:var(--text-primary)}
+main :is(h1,h2,h3,h4),.header :is(a,button,summary),.mobile-menu :is(a,button){color:var(--text-primary)}
+main :is(.lead,.section-heading p,.topic-card p,.feature-grid p,.detail-grid p,.article-card p,.capability-card p,.service-summary,.service-name p,.caption,.muted,.catalogue-number,.contact-form label span,.flow-risk,.next-steps li p){color:var(--text-secondary)}
+main :is(.text-link,.back-link,.contact-channel,.article-body,.detail-reading){color:var(--text-primary)}
+main :is(.text-link:hover,.back-link:hover){color:var(--text-primary);text-decoration-color:var(--text-accent)}
+main :is(h2 em,.feature-mark),#capabilities .muted-heading{color:var(--text-accent)}
+.cinematic-hero .cx-hero-copy :is(h1,h2,p,.lead,.hero-summary,.article-byline,.article-meta,.breadcrumbs,.breadcrumbs span,.breadcrumbs a){color:var(--text-inverse)!important}
+.cinematic-hero .cx-hero-copy h1.cx-hero-title--glossy{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:var(--text-inverse);filter:none;text-shadow:none;animation:cx-hero-in .8s var(--ease) both}
+.cinematic-hero .cx-hero-copy h1 :is(span,.cx-hero-accent){background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--text-accent)!important;-webkit-text-fill-color:var(--text-accent);animation:none}
+.cinematic-hero :is(.hero-eyebrow,.hero-context-head,.hero-context li>span){color:var(--text-accent)}
+.cinematic-hero :is(.hero-context,.orchestration) :is(h2,h3,strong,p,small,span,a,button){color:var(--text-inverse)}
+.cinematic-hero :is(.preview-indicator,.scene-title>div>span,.scene-run-label,.signal-step small,.scene-record>div>span,.scene-integrations>span,.scene-integrations>div,.orchestration-bottom>span){color:var(--text-inverse)}
+.cinematic-hero .scenario-tabs button[aria-selected=true],.button.primary,.button.dark,.footer .subscribe-row button{color:var(--text-inverse)}
+.cinematic-hero .cx-hero-copy :is(.button.outline,.button.hero-secondary,.button.text),.cinematic-hero .tag-list span{color:var(--text-inverse)}
+.footer :is(h2,p,span,a,button,.footer-actions a,.analytics-settings,.consent){color:var(--text-inverse)}
+.footer :is(a:hover,button:hover){color:var(--text-inverse);text-decoration-color:var(--text-accent)}
+.footer input[type=email]{color:var(--text-inverse)}
+input::placeholder,textarea::placeholder{color:var(--text-secondary)}
+.footer input::placeholder{color:var(--text-inverse);opacity:.75}
+.price-card.featured :is(h2,h3,p,span,small,strong,li,.plan-kind,.price){color:var(--text-inverse)}
+.status,.status.approved,.record-state.is-review,.field-error,.form-status,.workflow-status{color:var(--text-primary)}
+.chat-question,.engagement-tools>button:last-child,.notice-bar,.notice-bar a{color:var(--text-inverse)}
+/* The homepage capability chapter is horizontal at every breakpoint. */
+#capabilities{display:block}#capabilities>.section-heading{position:static;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-bottom:32px}#capabilities>.section-heading p{margin-top:0}#capabilities>.section-end{display:flex;justify-content:flex-start;margin-top:12px}
+.capability-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}.capability-controls>p{font-size:14px;color:var(--text-secondary)}.capability-controls-actions{display:flex;align-items:center;gap:10px;flex:none}.capability-controls-actions>span{font-size:13px;font-variant-numeric:tabular-nums;color:var(--text-secondary);margin-right:6px}.capability-controls button{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text-primary);transition:background .25s,border-color .25s,transform .25s}.capability-controls button svg{width:19px;height:19px}.capability-controls [data-carousel-prev] svg{transform:rotate(180deg)}.capability-controls button:hover:not(:disabled){background:#f0eae7;border-color:var(--text-accent);transform:translateY(-2px)}.capability-controls button:disabled{opacity:.35;cursor:default}
+.capability-track.horizontal-track{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:4px;padding:5px 4px 28px;scrollbar-width:thin;scrollbar-color:#736774 #f0eae7;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.horizontal-track .capability-card{position:relative;top:auto;flex:0 0 calc((100% - 36px)/3);min-width:0;min-height:350px;padding:28px;scroll-snap-align:start;scroll-margin:0;transition:border-color .3s,box-shadow .3s;background:#fff}.horizontal-track .capability-card:nth-child(2n){background:#f4eef5}.horizontal-track .capability-card:nth-child(3n){background:#f9e8dd}.horizontal-track .capability-card h3{color:var(--text-primary);font-size:1.4rem}.horizontal-track .capability-card>strong{color:var(--text-primary)}.horizontal-track .capability-card p{color:var(--text-secondary)}.horizontal-track .capability-card:hover{box-shadow:0 24px 45px -35px #28142d80}.horizontal-track .capability-card:focus-visible{outline-offset:-4px}
+@media(max-width:1000px){.horizontal-track .capability-card{flex-basis:calc((100% - 18px)/2)}}
+@media(max-width:760px){#capabilities>.section-heading{grid-template-columns:1fr;gap:20px}.horizontal-track .capability-card{flex-basis:86%;min-height:340px;padding:26px}.capability-controls{gap:10px}.capability-controls>p{font-size:13px;max-width:23ch}.capability-controls-actions{gap:7px}.capability-controls-actions>span{display:none}.capability-controls button{width:42px;height:42px}}
+@media(prefers-reduced-motion:reduce){.capability-track.horizontal-track{scroll-behavior:auto}.capability-controls button,.horizontal-track .capability-card{transition:none}.capability-controls button:hover:not(:disabled){transform:none}}
+/* Inverse roles keep brand ivory readable on every aubergine surface. */
+main :is(.practice-section,.approach-section,.brief-card,.mini-sidebar) :is(h1,h2,h3,h4,p,span,strong,small,a,li){color:var(--text-inverse)}
+.cinematic-hero .record-state.is-review,.footer .form-status{color:var(--text-inverse)}
