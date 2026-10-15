@@ -25,3 +25,15 @@ test('scheduled updates hide future, expired and incomplete offers',async()=>{
  w.eval(fs.readFileSync(new URL('../public/engagement.js',import.meta.url),'utf8'));await new Promise(r=>setTimeout(r,0));
  const text=w.document.querySelector('[data-updates-list]').textContent;assert(text.includes('Current notice'));assert(!/Future notice|Expired offer|No terms/.test(text));dom.window.close();
 });
+
+test('welcome is delayed, dismissible and remembered without moving focus',()=>{
+ const dom=new JSDOM(html,{url:'https://theimamcollective.com',runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window,d=w.document,timers=[];
+ w.setTimeout=(fn,delay)=>{timers.push({fn,delay});return timers.length};w.fetch=async()=>({ok:true,json:async()=>({updates:[]})});
+ const before=d.activeElement;w.eval(fs.readFileSync(new URL('../public/engagement.js',import.meta.url),'utf8'));
+ assert(d.querySelector('[data-visitor-notice]').hidden);timers.find(t=>t.delay===8000).fn();assert(!d.querySelector('[data-visitor-notice]').hidden);assert.equal(d.activeElement,before);assert.equal(w.localStorage.getItem('collective-welcome-v1'),'1');d.querySelector('[data-visitor-notice-close]').click();assert(d.querySelector('[data-visitor-notice]').hidden);dom.window.close();
+});
+
+test('returning visitors are not shown another welcome',()=>{
+ const dom=new JSDOM(html,{url:'https://theimamcollective.com',runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window,timers=[];
+ w.localStorage.setItem('collective-welcome-v1','1');w.setTimeout=(fn,delay)=>{timers.push({fn,delay});return timers.length};w.fetch=async()=>({ok:true,json:async()=>({updates:[]})});w.eval(fs.readFileSync(new URL('../public/engagement.js',import.meta.url),'utf8'));assert(!timers.some(t=>t.delay===8000));assert(w.document.querySelector('[data-visitor-notice]').hidden);dom.window.close();
+});
