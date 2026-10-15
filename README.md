@@ -19,7 +19,7 @@ npm test
 VERIFY_ORIGIN=http://127.0.0.1:3000 npm run verify:live
 ```
 
-The sixteen automated tests cover all 62 pages, metadata, internal links and images, global content, redirects, USD pricing, dashboard tabs, filters, service recommendations, form validation, provider-failure recovery and the automation demo. The live checker verifies served pages, assets, redirects and actual missing-page behavior.
+The 23 automated tests cover all 89 pages, metadata, internal links and images, global content, redirects, USD pricing, dashboard tabs, filters, service recommendations, form validation, provider-failure recovery and the automation demo. The live checker verifies served pages, assets, redirects and actual missing-page behavior.
 
 ## Where to edit
 
@@ -53,20 +53,22 @@ Contact validation runs before submission. A provider outage displays an explici
 
 ## Scope and publication
 
-All 62 pages are complete marketing/editorial pages. Academy, Talent and Jobs do not claim an authenticated learning system, candidate database or hiring platform. Pricing is indicative and in USD; annual totals are exactly twelve monthly estimates, with implementation, usage and taxes separate. Confirm commercial terms, mailbox setup and the privacy notice against actual business arrangements before public release.
+All 89 pages are complete marketing/editorial pages. Academy, Talent and Jobs do not claim an authenticated learning system, candidate database or hiring platform. Pricing is indicative and in USD; annual totals are exactly twelve monthly estimates, with implementation, usage and taxes separate. Confirm commercial terms, mailbox setup and the privacy notice against actual business arrangements before public release.
 
 Project previews are original interface studies, not live screenshots or customer-result claims. Named project references and repository links are excluded from the public website. See `docs/REFERENCE-RESEARCH.md`, `docs/image-assets.json` and `docs/VALIDATION.md` for provenance and verification details.
 
 ## Corporate component refinement
 
-The corporate hero includes three local workflow scenarios, explicit animation pause/play, offscreen suspension and reduced-motion defaults. All 62 pages share the refined typography, sticky navigation, service mega-menu, component surfaces and interaction states.
+The corporate hero includes three local workflow scenarios, explicit animation pause/play, offscreen suspension and reduced-motion defaults. All 89 pages share the refined typography, sticky navigation, service mega-menu, component surfaces and interaction states.
 
 Button and tab treatments include HTML/CSS adaptations of 21st.dev’s MIT-licensed public source. Attribution and licence are in `docs/THIRD-PARTY-NOTICES.md`. Jitter was requested but its editor/site is unavailable through this environment; no animation is claimed as a Jitter export. Motion is authored in the website itself. Direct 21st.dev and jitter.video access was requested in the environment configuration draft.
 
-## Current release: 62 pages and article-specific photography
+## Current release: 89 pages and article-specific photography
 
 Run `npm ci`, `npm run build` and `npm test`. Source content is under `src/`; the complete deployable static output is `dist/`. Detailed service and industry content is in `src/topics.mjs`. The 15 article images and responsive variants live in `public/images/blog-*.webp`; their generation mapping is `docs/blog-image-assets.json`.
 
 Analytics is intentionally inactive. For a later approved activation, set a valid GA4 measurement ID in `public/analytics-config.json`, set `enabled` to `true`, rebuild and deploy. Visitor consent is still required before the Google script loads. The footer always offers analytics preferences. Meta social previews are included; no Meta Pixel or account verification token is invented.
 
 Cloudflare KV delivery is commit-pinned. A repository change alone does not prove a live update: publish the reviewed commit, set the Worker's COMMIT variable to that full SHA and deploy using the existing bindings. Validate the live site after that step. Search indexing, account verification and live analytics are external checks, not build-time guarantees.
+
+The hero presentation layer is `public/hero-premium.css` with page-specific context in `src/hero-system.mjs`. The module catalogue and fourteen module pages are defined in `src/catalogue.mjs`; additional industry briefs are in `src/industry-expansion.mjs`. Reference route coverage is documented in `docs/page-coverage.json`. Each page has at most one closing invitation.

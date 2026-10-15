@@ -27,3 +27,9 @@ The public identity is exclusively the collective. The work section contains fou
 The journal uses fifteen distinct editorial photographs, one per article, with responsive 768px exports. Photographs illustrate the subject and do not imply a client or employee relationship. Commercial navigation connects six capability pages to eighteen detailed service pages, six industry pages and a central detailed-services hub. All 62 pages share typography, spacing, navigation, enquiry controls and metadata conventions.
 
 Analytics is prepared with consent controls and intentionally disabled until a valid measurement ID is supplied and activation is requested. The first-party website guide uses browser-local published-service matching; it does not claim live human or model-based chat.
+
+## Premium hero layer
+
+The latest visual layer is scoped to page heroes, action buttons and the closing invitation. Ivory editorial layouts pair with compact aubergine working-perspective panels, restrained vermilion accents and clear actions. Service photography receives a refined frame rather than an unrelated graphic. No animated dashboard claims or invented customer statistics are introduced. The footer uses its ordinary company/navigation layout; a page's single closing CTA provides the invitation.
+
+The Catalogue, Solutions and Portfolio pages connect fourteen operational module briefs with the existing capability structure. Industry coverage expands without changing the established card, reading or form layouts. Modules describe scoped implementation, with reviewed dependencies and handovers.
